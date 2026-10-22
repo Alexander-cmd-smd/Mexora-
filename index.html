@@ -140,10 +140,9 @@ const firebaseApp=initializeApp(firebaseConfig),auth=getAuth(firebaseApp),db=get
 const $=id=>document.getElementById(id);
 
 let authMode='signup',currentUser=null,currentProfile={},feedUnsub=null,repostUnsub=null,chatListUnsub=null,messageUnsub=null,activeConversation=null,activeRecipient=null,postsCache=[],currentChatUpdatedAt=0,replyingToText=null;
-
-// Match Data Variables
 let matchList = [];
 let currentMatch = null;
+let lastHomeClick = 0; // Variable to track double click
 
 setTimeout(() => {
   const splash = $('splash-screen');
@@ -156,19 +155,11 @@ window.togglePassword = function() {
   else { p.type = 'password'; document.querySelector('.toggle-pass').textContent = '👁️'; }
 };
 
-// Avatar Helper based on Gender (M, F, R)
 function getAvatar(name, gender, size=42) {
   let bg = 'linear-gradient(135deg,#a78bfa,#f472b6)'; 
   let letter = 'R';
-  
-  if (gender === 'Male') {
-    bg = 'linear-gradient(135deg,#60a5fa,#3b82f6)'; 
-    letter = 'M';
-  } else if (gender === 'Female') {
-    bg = 'linear-gradient(135deg,#f472b6,#ec4899)'; 
-    letter = 'F';
-  }
-  
+  if (gender === 'Male') { bg = 'linear-gradient(135deg,#60a5fa,#3b82f6)'; letter = 'M'; } 
+  else if (gender === 'Female') { bg = 'linear-gradient(135deg,#f472b6,#ec4899)'; letter = 'F'; }
   return `<div class="avatar" style="background:${bg};width:${size}px;height:${size}px;font-size:${Math.round(size*0.45)}px">${letter}</div>`;
 }
 
@@ -243,11 +234,29 @@ async function logout(){
   $('password').value='';$('identity').value='';showAuth('login');toast('You have logged out.');
 }
 
+// UPDATED NAVIGATE FUNCTION WITH DOUBLE CLICK REFRESH
 function navigate(section){
+  if (section === 'home') {
+    const now = Date.now();
+    // Check if user clicked Home twice within 400ms
+    if (now - lastHomeClick < 400) {
+      toast('Refreshing feed...');
+      startFeed(); // Re-fetch the posts
+      if(window.scrollY > 0) window.scrollTo({top:0,behavior:'smooth'});
+      lastHomeClick = 0; // Reset so it doesn't keep refreshing
+    } else {
+      lastHomeClick = now;
+    }
+  }
+
   document.querySelectorAll('.section').forEach(el=>el.classList.remove('active'));
   const t=$('section-'+section);if(t)t.classList.add('active');
   document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.section===section));
-  window.scrollTo({top:0,behavior:'smooth'});
+  
+  if(section !== 'home') {
+     window.scrollTo({top:0,behavior:'smooth'});
+  }
+  
   if(section==='discover')renderPeople();
   if(section==='match')loadMatchData();
 }
@@ -269,7 +278,6 @@ function pickNewMatch() {
         $('match-card-container').innerHTML = '<div class="empty">No other members found yet. Invite some friends!</div>';
         return;
     }
-    // Pick a random user from the list
     const randomIndex = Math.floor(Math.random() * matchList.length);
     currentMatch = matchList[randomIndex];
     renderMatchCard();
@@ -610,4 +618,4 @@ onAuthStateChanged(auth,async user=>{
 showAuth('signup');
 </script>
 </body>
-</html>
+  </html>
