@@ -7,17 +7,18 @@
 <title>MEXORA — One World. New Connections.</title>
 <style>
 :root{--bg:#0c0a14;--panel:#171323;--panel2:#211a32;--text:#f7f4ff;--muted:#aaa2bd;--purple:#a78bfa;--pink:#f472b6;--line:#342a49;--good:#8be0bd}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#211539 0%,var(--bg) 48%);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh;overflow-x:hidden}button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:none!important}.wrap{max-width:1120px;margin:auto;padding:22px}.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:2px;font-size:22px}.logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--purple),var(--pink));display:grid;place-items:center;color:#160f26;font-weight:1000}.muted{color:var(--muted)}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:28px}.pill{border:1px solid var(--line);background:#ffffff08;color:var(--text);padding:10px 15px;border-radius:999px}.btn{border:0;border-radius:12px;padding:12px 16px;color:#180f25;font-weight:800;background:linear-gradient(110deg,var(--purple),var(--pink));box-shadow:0 8px 25px #a78bfa22}.btn.secondary{background:#ffffff0a;color:var(--text);border:1px solid var(--line);box-shadow:none}.btn:disabled{opacity:.45;cursor:not-allowed}.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:center;padding:30px 0 45px}.eyebrow{color:var(--purple);font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase}.hero h1{font-size:clamp(38px,6vw,68px);line-height:1.02;letter-spacing:-2px;margin:14px 0}.gradient{background:linear-gradient(100deg,#c4b5fd,#f9a8d4);color:transparent;background-clip:text}.hero p{font-size:17px;line-height:1.7;color:var(--muted);max-width:540px}.hero-card,.card,.auth-card{background:linear-gradient(160deg,#211a32ee,#151120f5);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 20px 70px #0002}.orb{height:190px;border-radius:18px;background:radial-gradient(circle at 35% 35%,#f9a8d4 0,#a78bfa 24%,#4c2b76 50%,#191326 75%);display:grid;place-items:center;font-size:55px;margin-bottom:18px}.feature-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.feature{padding:9px 12px;border:1px solid var(--line);border-radius:999px;color:#d9d1e8;font-size:13px}.auth-area{max-width:470px;margin:10px auto 70px}.auth-card h2{margin:8px 0}.tabs{display:flex;background:#0e0b17;padding:5px;border-radius:12px;margin:20px 0}.tabs button{flex:1;border:0;padding:11px;border-radius:9px;background:transparent;color:var(--muted);font-weight:700}.tabs button.active{background:var(--panel2);color:var(--text)}label{display:block;font-size:13px;color:#d9d1e8;margin:14px 0 7px}input,select,textarea{width:100%;border:1px solid var(--line);border-radius:11px;background:#0e0b17;color:var(--text);padding:13px;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--purple)}.full{width:100%;margin-top:17px}.small{font-size:12px;line-height:1.6}.notice{padding:11px 13px;border-radius:10px;background:#8be0bd12;border:1px solid #8be0bd33;color:var(--good);font-size:13px;margin-top:12px}.error{color:#fda4af;font-size:13px;margin-top:10px}.app-layout{display:grid;grid-template-columns:210px minmax(0,1fr);gap:22px}.sidebar{align-self:start;position:sticky;top:18px}.nav{display:grid;gap:8px;margin-top:24px}.nav button{width:100%;text-align:left;padding:13px;border:1px solid transparent;border-radius:12px;background:transparent;color:var(--muted)}.nav button.active,.nav button:hover{background:var(--panel2);border-color:var(--line);color:var(--text)}.main-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.main-head h1{margin:0;font-size:27px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.card{padding:18px;margin-bottom:14px}.card h3{margin:0 0 8px}.post-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}.avatar{width:42px;height:42px;display:grid;place-items:center;border-radius:50%;background:linear-gradient(135deg,#a78bfa,#f472b6);font-weight:900;color:#170f25;flex-shrink:0}.post-actions{display:flex;gap:12px;margin-top:13px;align-items:center}.post-actions button{border:1px solid var(--line);background:#ffffff08;color:var(--text);padding:8px 12px;border-radius:10px;display:flex;align-items:center;gap:6px;font-weight:600}.person{display:flex;gap:12px;align-items:center}.person[role=button]{cursor:pointer}.person[role=button]:focus{outline:2px solid var(--purple);outline-offset:2px}.person .btn{margin-left:auto}.match-art{height:130px;border-radius:16px;background:radial-gradient(circle at 30% 40%,#f9a8d4,#a78bfa 35%,#34204f 75%);display:grid;place-items:center;font-size:42px;margin-bottom:14px}.empty{padding:28px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:14px}.bottom-nav{display:none}.footer{text-align:center;color:#766e89;font-size:12px;padding:24px 0 10px}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#29203c;border:1px solid var(--line);padding:12px 17px;border-radius:12px;z-index:10;max-width:90%;box-shadow:0 12px 35px #0007}.section{display:none}.section.active{display:block}.media{max-width:100%;max-height:420px;object-fit:cover;border-radius:14px;margin-top:10px}.clickable{cursor:pointer}.profile-cover{display:flex;align-items:center;gap:14px}.profile-cover .avatar{width:68px;height:68px;font-size:24px}.modal-backdrop{position:fixed;inset:0;background:#05030bcc;z-index:30;display:flex;align-items:center;justify-content:center;padding:16px}.modal{width:min(650px,100%);max-height:90vh;overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px}.modal-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.comment-row{padding:10px 0;border-bottom:1px solid var(--line)}.chat-layout{display:grid;grid-template-columns:minmax(150px,.7fr) minmax(0,1.3fr);gap:12px}.chat-list{max-height:400px;overflow:auto}.chat-item{padding:12px;border:1px solid var(--line);border-radius:12px;margin-bottom:8px;cursor:pointer}.chat-item.active{background:var(--panel2)}.chat-window{min-height:300px;display:flex;flex-direction:column}.chat-messages{flex:1;max-height:330px;overflow:auto;padding:8px;overflow-x:hidden}.bubble{max-width:85%;padding:10px 12px;border-radius:14px;background:var(--panel2);margin:8px 0;overflow-wrap:anywhere;position:relative;transition:transform 0.2s}.bubble.mine{margin-left:auto;background:#5b3b7e}.compose-row{display:flex;gap:8px;align-items:center}.compose-row input{min-width:0}.post-image-label{display:inline-block;padding:8px 12px;border:1px solid var(--line);border-radius:10px;cursor:pointer;color:var(--text)}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#211539 0%,var(--bg) 48%);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh;overflow-x:hidden}button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:none!important}.wrap{max-width:1120px;margin:auto;padding:22px}.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:2px;font-size:22px}.logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--purple),var(--pink));display:grid;place-items:center;color:#160f26;font-weight:1000}.muted{color:var(--muted)}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:28px}.pill{border:1px solid var(--line);background:#ffffff08;color:var(--text);padding:10px 15px;border-radius:999px}.btn{border:0;border-radius:12px;padding:12px 16px;color:#180f25;font-weight:800;background:linear-gradient(110deg,var(--purple),var(--pink));box-shadow:0 8px 25px #a78bfa22}.btn.secondary{background:#ffffff0a;color:var(--text);border:1px solid var(--line);box-shadow:none}.btn:disabled{opacity:.45;cursor:not-allowed}.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:center;padding:30px 0 45px}.eyebrow{color:var(--purple);font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase}.hero h1{font-size:clamp(38px,6vw,68px);line-height:1.02;letter-spacing:-2px;margin:14px 0}.gradient{background:linear-gradient(100deg,#c4b5fd,#f9a8d4);color:transparent;background-clip:text}.hero p{font-size:17px;line-height:1.7;color:var(--muted);max-width:540px}.hero-card,.card,.auth-card{background:linear-gradient(160deg,#211a32ee,#151120f5);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 20px 70px #0002}.orb{height:190px;border-radius:18px;background:radial-gradient(circle at 35% 35%,#f9a8d4 0,#a78bfa 24%,#4c2b76 50%,#191326 75%);display:grid;place-items:center;font-size:55px;margin-bottom:18px}.feature-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.feature{padding:9px 12px;border:1px solid var(--line);border-radius:999px;color:#d9d1e8;font-size:13px}.auth-area{max-width:470px;margin:10px auto 70px}.auth-card h2{margin:8px 0}.tabs{display:flex;background:#0e0b17;padding:5px;border-radius:12px;margin:20px 0}.tabs button{flex:1;border:0;padding:11px;border-radius:9px;background:transparent;color:var(--muted);font-weight:700}.tabs button.active{background:var(--panel2);color:var(--text)}label{display:block;font-size:13px;color:#d9d1e8;margin:14px 0 7px}input,select,textarea{width:100%;border:1px solid var(--line);border-radius:11px;background:#0e0b17;color:var(--text);padding:13px;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--purple)}.full{width:100%;margin-top:17px}.small{font-size:12px;line-height:1.6}.notice{padding:11px 13px;border-radius:10px;background:#8be0bd12;border:1px solid #8be0bd33;color:var(--good);font-size:13px;margin-top:12px}.error{color:#fda4af;font-size:13px;margin-top:10px}.app-layout{display:grid;grid-template-columns:210px minmax(0,1fr);gap:22px}.sidebar{align-self:start;position:sticky;top:18px}.nav{display:grid;gap:8px;margin-top:24px}.nav button{width:100%;text-align:left;padding:13px;border:1px solid transparent;border-radius:12px;background:transparent;color:var(--muted)}.nav button.active,.nav button:hover{background:var(--panel2);border-color:var(--line);color:var(--text)}.main-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.main-head h1{margin:0;font-size:27px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.card{padding:18px;margin-bottom:14px}.card h3{margin:0 0 8px}.post-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}.avatar{width:42px;height:42px;display:grid;place-items:center;border-radius:50%;font-weight:900;color:#170f25;flex-shrink:0;font-size:18px}.post-actions{display:flex;gap:12px;margin-top:13px;align-items:center}.post-actions button{border:1px solid var(--line);background:#ffffff08;color:var(--text);padding:8px 12px;border-radius:10px;display:flex;align-items:center;gap:6px;font-weight:600}.person{display:flex;gap:12px;align-items:center}.person[role=button]{cursor:pointer}.person[role=button]:focus{outline:2px solid var(--purple);outline-offset:2px}.person .btn{margin-left:auto}.match-art{height:130px;border-radius:16px;background:radial-gradient(circle at 30% 40%,#f9a8d4,#a78bfa 35%,#34204f 75%);display:grid;place-items:center;font-size:42px;margin-bottom:14px}.empty{padding:28px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:14px}.bottom-nav{display:none}.footer{text-align:center;color:#766e89;font-size:12px;padding:24px 0 10px}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#29203c;border:1px solid var(--line);padding:12px 17px;border-radius:12px;z-index:10;max-width:90%;box-shadow:0 12px 35px #0007}.section{display:none}.section.active{display:block}.clickable{cursor:pointer}.profile-cover{display:flex;align-items:center;gap:14px}.profile-cover .avatar{width:68px;height:68px;font-size:28px}.modal-backdrop{position:fixed;inset:0;background:#05030bcc;z-index:30;display:flex;align-items:center;justify-content:center;padding:16px}.modal{width:min(650px,100%);max-height:90vh;overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px}.modal-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.comment-row{padding:10px 0;border-bottom:1px solid var(--line)}.chat-layout{display:grid;grid-template-columns:minmax(150px,.7fr) minmax(0,1.3fr);gap:12px}.chat-list{max-height:400px;overflow:auto}.chat-item{padding:12px;border:1px solid var(--line);border-radius:12px;margin-bottom:8px;cursor:pointer}.chat-item.active{background:var(--panel2)}.chat-window{min-height:300px;display:flex;flex-direction:column}.chat-messages{flex:1;max-height:330px;overflow:auto;padding:8px;overflow-x:hidden}.bubble{max-width:85%;padding:10px 12px;border-radius:14px;background:var(--panel2);margin:8px 0;overflow-wrap:anywhere;position:relative;transition:transform 0.2s;touch-action:pan-y}.bubble.mine{margin-left:auto;background:#5b3b7e}.compose-row{display:flex;gap:8px;align-items:center}.compose-row input{min-width:0}
 .pass-wrap{position:relative}
 .pass-wrap input{padding-right:40px}
 .pass-wrap .toggle-pass{position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:var(--muted);user-select:none;font-size:18px}
 .ticks{display:inline-flex;align-items:center;margin-left:6px}
 .tick{width:14px;height:14px;fill:currentColor;color:#aaa2bd} 
 .tick.read{color:var(--pink)} 
-.swipe-reply-hint{position:absolute;right:-30px;top:50%;transform:translateY(-50%);opacity:0;transition:opacity 0.2s;font-size:20px;pointer-events:none}
+.swipe-reply-hint{position:absolute;right:-30px;top:50%;transform:translateY(-50%);opacity:0;transition:opacity 0.2s;font-size:20px;pointer-events:none;color:var(--purple)}
 .liked{color:var(--pink) !important;border-color:var(--pink) !important;background:rgba(244,114,182,0.1) !important}
+.reply-preview{background:rgba(0,0,0,0.2);border-left:3px solid var(--purple);padding:6px 10px;border-radius:4px;margin-bottom:8px;font-size:12px;color:var(--muted);display:none;position:relative}
+.reply-preview .close-reply{position:absolute;right:8px;top:50%;transform:translateY(-50%);cursor:pointer;font-size:16px;color:var(--text)}
 
-/* Splash Screen Styles */
 #splash-screen{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity 0.5s ease}
 #splash-screen .logo{width:80px;height:80px;font-size:40px;border-radius:24px;margin-bottom:20px;animation:pulse 2s infinite}
 #splash-screen h1{letter-spacing:6px;margin:0;font-weight:900;background:linear-gradient(100deg,#c4b5fd,#f9a8d4);-webkit-background-clip:text;color:transparent}
@@ -32,7 +33,6 @@
 </head>
 <body>
 
-<!-- Splash Screen -->
 <div id="splash-screen">
   <div class="logo">M</div>
   <h1>MEXORA</h1>
@@ -101,7 +101,7 @@
       <div>
         <section class="section active" id="section-home">
           <div class="main-head"><div><div class="eyebrow">Your community</div><h1>Home feed</h1></div><button class="btn" onclick="document.getElementById('post-text').focus()">＋ Create post</button></div>
-          <div class="card"><h3>Share a moment</h3><textarea id="post-text" rows="3" maxlength="1000" placeholder="What's one thing you'd like to share today?"></textarea><div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px"><label class="post-image-label">📷 Add image<input id="post-image" type="file" accept="image/*" hidden></label><span class="small muted">Text posts · max 1,000 characters (image uploads not enabled yet)</span><button class="btn" onclick="createPost()">Post</button></div><div id="post-feedback" class="small muted"></div></div>
+          <div class="card"><h3>Share a moment</h3><textarea id="post-text" rows="3" maxlength="1000" placeholder="What's one thing you'd like to share today?"></textarea><div style="display:flex;justify-content:flex-end;margin-top:10px"><button class="btn" onclick="createPost()">Post</button></div><div id="post-feedback" class="small muted"></div></div>
           <div id="feed"></div>
         </section>
         <section class="section" id="section-reposts"><div class="main-head"><div><div class="eyebrow">What you shared again</div><h1>Reposts</h1></div></div><div id="repost-feed"></div></section>
@@ -116,11 +116,11 @@
         </section>
         <section class="section" id="section-messages">
           <div class="main-head"><div><div class="eyebrow">Keep the conversation going</div><h1>Messages</h1></div></div>
-          <div class="card"><p class="small muted">Swipe right on any message to reply directly. Pink ticks mean they've seen it.</p><div class="chat-layout"><div><h3>Conversations</h3><div id="chat-list" class="chat-list"><div class="empty">Your conversations will appear here.</div></div></div><div class="chat-window"><div class="modal-head"><h3 id="chat-title">Select a conversation</h3><span id="chat-status" class="small muted"></span></div><div id="chat-messages" class="chat-messages"><div class="empty">Choose a conversation to view messages.</div></div><div class="compose-row"><input id="chat-text" maxlength="1500" placeholder="Write a message…" disabled><label class="post-image-label">📷<input id="chat-image" type="file" accept="image/*" hidden disabled></label><button class="btn" id="send-chat" onclick="sendChatMessage()" disabled>Send</button></div></div></div></div>
+          <div class="card"><p class="small muted">Swipe right on any message to reply directly. Pink ticks mean they've seen it.</p><div class="chat-layout"><div><h3>Conversations</h3><div id="chat-list" class="chat-list"><div class="empty">Your conversations will appear here.</div></div></div><div class="chat-window"><div class="modal-head"><h3 id="chat-title">Select a conversation</h3><span id="chat-status" class="small muted"></span></div><div id="reply-preview" class="reply-preview"><span id="reply-text"></span><span class="close-reply" onclick="cancelReply()">✕</span></div><div id="chat-messages" class="chat-messages"><div class="empty">Choose a conversation to view messages.</div></div><div class="compose-row"><input id="chat-text" maxlength="1500" placeholder="Write a message…" disabled><button class="btn" id="send-chat" onclick="sendChatMessage()" disabled>Send</button></div></div></div></div>
         </section>
         <section class="section" id="section-profile">
           <div class="main-head"><div><div class="eyebrow">Your corner of Mexora</div><h1>Your profile</h1></div></div>
-          <div class="card"><form id="profile-form"><label for="profile-photo">Profile photo</label><input id="profile-photo" type="file" accept="image/*"><div id="profile-photo-preview"></div><label for="profile-name">Display name</label><input id="profile-name" maxlength="40" required><label for="profile-city">City</label><input id="profile-city" maxlength="60" placeholder="e.g. Lagos, Nigeria"><label for="profile-bio">Short bio</label><textarea id="profile-bio" rows="3" maxlength="180" placeholder="A little about you..."></textarea><label for="profile-intent">I'm here for</label><select id="profile-intent"><option>Friendship and dating</option><option>Friendship</option><option>Dating</option></select><label for="profile-interests">Interests (comma separated)</label><input id="profile-interests" maxlength="140" placeholder="Music, movies, travel"><button class="btn full" type="submit">Save profile</button><div id="profile-feedback" class="notice hidden">Profile saved.</div></form></div>
+          <div class="card"><form id="profile-form"><label for="profile-name">Display name</label><input id="profile-name" maxlength="40" required><label for="profile-city">City</label><input id="profile-city" maxlength="60" placeholder="e.g. Lagos, Nigeria"><label for="profile-bio">Short bio</label><textarea id="profile-bio" rows="3" maxlength="180" placeholder="A little about you..."></textarea><label for="profile-intent">I'm here for</label><select id="profile-intent"><option>Friendship and dating</option><option>Friendship</option><option>Dating</option></select><label for="profile-interests">Interests (comma separated)</label><input id="profile-interests" maxlength="140" placeholder="Music, movies, travel"><button class="btn full" type="submit">Save profile</button><div id="profile-feedback" class="notice hidden">Profile saved.</div></form></div>
         </section>
       </div>
     </div>
@@ -132,19 +132,16 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, sendEmailVerification, signOut, onAuthStateChanged, updateProfile } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js";
 import { getFirestore, doc, setDoc, getDoc, collection, addDoc, updateDoc, deleteDoc, onSnapshot, query, orderBy, getDocs, where, serverTimestamp, deleteField } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-firestore.js";
-import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/13.1.0/firebase-storage.js";
 
 const firebaseConfig={apiKey:"AIzaSyBcyquhDTo_EKyi1hkld2jKtKEwmzWMpoc",authDomain:"mexora-c1cb0.firebaseapp.com",projectId:"mexora-c1cb0",storageBucket:"mexora-c1cb0.firebasestorage.app",messagingSenderId:"690412213379",appId:"1:690412213379:web:c8d1ce3079f68d6043b7b6"};
-const firebaseApp=initializeApp(firebaseConfig),auth=getAuth(firebaseApp),db=getFirestore(firebaseApp),storage=getStorage(firebaseApp);
+const firebaseApp=initializeApp(firebaseConfig),auth=getAuth(firebaseApp),db=getFirestore(firebaseApp);
 const $=id=>document.getElementById(id);
 
-let authMode='signup',currentUser=null,currentProfile={},feedUnsub=null,repostUnsub=null,chatListUnsub=null,messageUnsub=null,activeConversation=null,activeRecipient=null,postsCache=[],currentChatUpdatedAt=0;
+let authMode='signup',currentUser=null,currentProfile={},feedUnsub=null,repostUnsub=null,chatListUnsub=null,messageUnsub=null,activeConversation=null,activeRecipient=null,postsCache=[],currentChatUpdatedAt=0,replyingToText=null;
 
-// Splash Screen Timer
 setTimeout(() => {
   const splash = $('splash-screen');
-  splash.style.opacity = '0';
-  setTimeout(() => splash.remove(), 500);
+  if(splash) { splash.style.opacity = '0'; setTimeout(() => splash.remove(), 500); }
 }, 15000);
 
 window.togglePassword = function() {
@@ -152,6 +149,15 @@ window.togglePassword = function() {
   if (p.type === 'password') { p.type = 'text'; document.querySelector('.toggle-pass').textContent = '🙈'; } 
   else { p.type = 'password'; document.querySelector('.toggle-pass').textContent = '👁️'; }
 };
+
+// Avatar Helper based on Gender
+function getAvatar(name, gender, size=42) {
+  let bg = 'linear-gradient(135deg,#a78bfa,#f472b6)'; 
+  if (gender === 'Male') bg = 'linear-gradient(135deg,#60a5fa,#3b82f6)'; 
+  if (gender === 'Female') bg = 'linear-gradient(135deg,#f472b6,#ec4899)'; 
+  const initial = (name||'M').slice(0,1).toUpperCase();
+  return `<div class="avatar" style="background:${bg};width:${size}px;height:${size}px;font-size:${size*0.4}px">${initial}</div>`;
+}
 
 function showAuth(mode){
   authMode=mode;$('auth-area').scrollIntoView({behavior:'smooth',block:'center'});
@@ -175,7 +181,7 @@ $('auth-form').addEventListener('submit',async e=>{
       const cr=await createUserWithEmailAndPassword(auth,email,password);
       await updateProfile(cr.user,{displayName});
       await setDoc(doc(db,'profiles',cr.user.uid),{
-        uid:cr.user.uid, name:displayName, gender:gender, photoURL:'', city:'', bio:'', intent:'Friendship and dating', interests:'', createdAt:serverTimestamp(), updatedAt:serverTimestamp()
+        uid:cr.user.uid, name:displayName, gender:gender, city:'', bio:'', intent:'Friendship and dating', interests:'', createdAt:serverTimestamp(), updatedAt:serverTimestamp()
       });
       await sendEmailVerification(cr.user);await signOut(auth);
       showAuth('login');$('identity').value=email;
@@ -202,7 +208,7 @@ $('auth-form').addEventListener('submit',async e=>{
 async function ensureProfile(){
   const r=doc(db,'profiles',currentUser.uid),s=await getDoc(r);
   if(!s.exists()){
-    await setDoc(r,{uid:currentUser.uid,name:currentUser.displayName||'Mexora member',gender:'Rather not say',photoURL:'',city:'',bio:'',intent:'Friendship and dating',interests:'',createdAt:serverTimestamp(),updatedAt:serverTimestamp()});
+    await setDoc(r,{uid:currentUser.uid,name:currentUser.displayName||'Mexora member',gender:'Rather not say',city:'',bio:'',intent:'Friendship and dating',interests:'',createdAt:serverTimestamp(),updatedAt:serverTimestamp()});
   }else if('email' in (s.data()||{})){
     await updateDoc(r,{email:deleteField(),updatedAt:serverTimestamp()});
   }
@@ -238,22 +244,17 @@ function updateProfileForm(){
   $('profile-bio').value=currentProfile.bio||'';
   $('profile-intent').value=currentProfile.intent||'Friendship and dating';
   $('profile-interests').value=currentProfile.interests||'';
-  $('profile-photo-preview').innerHTML=currentProfile.photoURL?`<img class="media" style="width:110px;height:110px;object-fit:cover;border-radius:50%" src="${esc(currentProfile.photoURL)}" alt="Your profile photo">`:'';
 }
 
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-async function uploadImage(file,path){if(!file)return '';throw new Error('Image uploads are temporarily unavailable.');}
 
 $('profile-form').addEventListener('submit',async e=>{
   e.preventDefault();if(!currentUser)return;
   const btn=$('profile-form').querySelector('button[type=submit]');btn.disabled=true;
   try{
-    let photoURL=currentProfile.photoURL||'';
-    const file=$('profile-photo').files[0];
-    if(file)photoURL=await uploadImage(file,`profilePhotos/${currentUser.uid}/${Date.now()}_${file.name.replace(/[^a-zA-Z0-9._-]/g,'_')}`);
-    const profile={uid:currentUser.uid,name:$('profile-name').value.trim(),city:$('profile-city').value.trim(),bio:$('profile-bio').value.trim(),intent:$('profile-intent').value,interests:$('profile-interests').value.trim(),photoURL,updatedAt:serverTimestamp()};
+    const profile={uid:currentUser.uid,name:$('profile-name').value.trim(),city:$('profile-city').value.trim(),bio:$('profile-bio').value.trim(),intent:$('profile-intent').value,interests:$('profile-interests').value.trim(),updatedAt:serverTimestamp()};
     await updateDoc(doc(db,'profiles',currentUser.uid),profile);
-    await updateProfile(currentUser,{displayName:profile.name,photoURL});
+    await updateProfile(currentUser,{displayName:profile.name});
     currentProfile={...currentProfile,...profile};
     $('side-name').textContent=profile.name;$('side-city').textContent=profile.city||'Email verified';
     $('profile-feedback').textContent='Your profile is saved.';$('profile-feedback').classList.remove('hidden');
@@ -265,22 +266,14 @@ function startFeed(){
   if(feedUnsub)feedUnsub();
   feedUnsub=onSnapshot(query(collection(db,'posts'),orderBy('createdAt','desc')),async snap=>{
     postsCache=snap.docs.map(d=>({id:d.id,...d.data()}));
-    // Fetch counts for each post
     await Promise.all(postsCache.map(async p => {
       try {
         const likesSnap = await getDocs(collection(db,'posts',p.id,'likes'));
         const commentsSnap = await getDocs(collection(db,'posts',p.id,'comments'));
         const repostsSnap = await getDocs(query(collection(db,'reposts'), where('postId','==',p.id)));
-        
         let isLiked = false;
-        if(currentUser) {
-           const myLike = await getDoc(doc(db,'posts',p.id,'likes',currentUser.uid));
-           isLiked = myLike.exists();
-        }
-        p.likesCount = likesSnap.size;
-        p.commentsCount = commentsSnap.size;
-        p.repostsCount = repostsSnap.size;
-        p.isLiked = isLiked;
+        if(currentUser) { const myLike = await getDoc(doc(db,'posts',p.id,'likes',currentUser.uid)); isLiked = myLike.exists(); }
+        p.likesCount = likesSnap.size; p.commentsCount = commentsSnap.size; p.repostsCount = repostsSnap.size; p.isLiked = isLiked;
       } catch(e) { console.log("Count error", e); }
     }));
     renderFeed();
@@ -290,13 +283,13 @@ function startFeed(){
 function postCard(p,isRepost=false){
   const post=p.original||p;
   const author=p.repostedBy?{name:p.repostedBy,uid:p.reposterId}:post;
-  const image=post.imageURL?`<img class="media" src="${esc(post.imageURL)}" alt="Post image" loading="lazy">`:'';
-  
-  // Feature: Purple heart and counts
   const heartIcon = p.isLiked ? '💜' : '🤍';
   const likeClass = p.isLiked ? 'liked' : '';
+  
+  // Fetch gender for avatar if available, else default
+  const avatarHTML = getAvatar(post.authorName || author.name, post.authorGender || 'Rather not say', 42);
 
-  return `<article class="card"><div class="post-head clickable" onclick="openProfile('${esc(post.ownerId||p.reposterId||'')}')"><div class="avatar">${post.authorPhoto?`<img src="${esc(post.authorPhoto)}" style="width:42px;height:42px;object-fit:cover;border-radius:50%">`:esc((post.authorName||author.name||'M').slice(0,1).toUpperCase())}</div><div><strong>${esc(post.authorName||author.name||'Mexora member')}</strong><div class="small muted">${esc(post.city||'Worldwide')} · ${dateText(post.createdAt)}</div></div>${isRepost?'<span class="small muted" style="margin-left:auto">🔁 Reposted</span>':''}</div>${post.text?`<p style="line-height:1.65;white-space:pre-wrap">${esc(post.text)}</p>`:''}${image}<div class="post-actions">
+  return `<article class="card"><div class="post-head clickable" onclick="openProfile('${esc(post.ownerId||p.reposterId||'')}')">${avatarHTML}<div><strong>${esc(post.authorName||author.name||'Mexora member')}</strong><div class="small muted">${esc(post.city||'Worldwide')} · ${dateText(post.createdAt)}</div></div>${isRepost?'<span class="small muted" style="margin-left:auto">🔁 Reposted</span>':''}</div>${post.text?`<p style="line-height:1.65;white-space:pre-wrap">${esc(post.text)}</p>`:''}<div class="post-actions">
     <button class="${likeClass}" onclick="likePost('${p.id||post.id}')">${heartIcon} ${p.likesCount||0}</button>
     <button onclick="openComments('${post.id||p.postId}')">💬 ${p.commentsCount||0}</button>
     <button onclick="repostPost('${post.id||p.postId}')">🔁 ${p.repostsCount||0}</button>
@@ -307,13 +300,12 @@ function dateText(ts){try{return ts?.toDate?ts.toDate().toLocaleString(): 'Just 
 function renderFeed(){$('feed').innerHTML=postsCache.length?postsCache.map(p=>postCard(p)).join(''):'<div class="empty">No posts yet.</div>';}
 
 async function createPost(){
-  if(!currentUser)return;const text=$('post-text').value.trim(),file=$('post-image').files[0];
-  if(!text&&!file){toast('Write something first.');return;}
+  if(!currentUser)return;const text=$('post-text').value.trim();
+  if(!text){toast('Write something first.');return;}
   const btn=document.querySelector('#section-home .main-head button');btn.disabled=true;$('post-feedback').textContent='Publishing…';
   try{
-    let imageURL='';if(file)imageURL=await uploadImage(file,'');
-    await addDoc(collection(db,'posts'),{ownerId:currentUser.uid,authorName:currentProfile.name||currentUser.displayName||'Mexora member',authorPhoto:currentProfile.photoURL||currentUser.photoURL||'',city:currentProfile.city||'',text,imageURL,createdAt:serverTimestamp()});
-    $('post-text').value='';$('post-image').value='';$('post-feedback').textContent='';toast('Post published.');
+    await addDoc(collection(db,'posts'),{ownerId:currentUser.uid,authorName:currentProfile.name||currentUser.displayName||'Mexora member',authorGender:currentProfile.gender||'Rather not say',city:currentProfile.city||'',text,createdAt:serverTimestamp()});
+    $('post-text').value='';$('post-feedback').textContent='';toast('Post published.');
   }catch(e){console.error(e);toast(e.message||'Post failed.');$('post-feedback').textContent='Could not publish.';}finally{btn.disabled=false;}
 }
 
@@ -353,7 +345,7 @@ async function renderPeople(){
   try{
     const snap=await getDocs(collection(db,'profiles'));
     const list=snap.docs.map(d=>d.data()).filter(p=>p.uid!==currentUser?.uid&&(!queryText||(p.city||'').toLowerCase().includes(queryText)));
-    $('people-list').innerHTML=list.length?list.map(p=>`<div class="card person clickable" role="button" tabindex="0" data-profile-uid="${esc(p.uid)}" aria-label="Open ${esc(p.name||'member')} profile"><div class="avatar">${p.photoURL?`<img src="${esc(p.photoURL)}" style="width:42px;height:42px;border-radius:50%;object-fit:cover">`:esc((p.name||'M').slice(0,1).toUpperCase())}</div><div style="flex:1;min-width:0"><strong>${esc(p.name||'Mexora member')}</strong><div class="small muted">📍 ${esc(p.city||'Location not set')} · ${esc(p.gender||'Rather not say')}</div><div class="small muted">${esc(p.interests||'')}</div><div class="small">${esc(p.intent||'')}</div></div><button class="btn secondary" type="button" data-message-uid="${esc(p.uid)}" data-message-name="${esc(p.name||'Member')}">Message</button></div>`).join(''):'<div class="empty">No members found.</div>';
+    $('people-list').innerHTML=list.length?list.map(p=>`<div class="card person clickable" role="button" tabindex="0" data-profile-uid="${esc(p.uid)}" aria-label="Open ${esc(p.name||'member')} profile">${getAvatar(p.name, p.gender, 42)}<div style="flex:1;min-width:0"><strong>${esc(p.name||'Mexora member')}</strong><div class="small muted">📍 ${esc(p.city||'Location not set')} · ${esc(p.gender||'Rather not say')}</div><div class="small muted">${esc(p.interests||'')}</div><div class="small">${esc(p.intent||'')}</div></div><button class="btn secondary" type="button" data-message-uid="${esc(p.uid)}" data-message-name="${esc(p.name||'Member')}">Message</button></div>`).join(''):'<div class="empty">No members found.</div>';
   }catch(e){console.error(e);$('people-list').innerHTML='<div class="empty">Could not load members.</div>';}
 }
 
@@ -365,9 +357,9 @@ async function openProfile(uid){
   try{
     const snap=await getDoc(doc(db,'profiles',uid));if(!snap.exists())throw new Error('Profile not found.');
     const p=snap.data();
-    showModal(`<div class="modal-head"><h2>Member profile</h2><button class="pill" onclick="closeModal()">Close ✕</button></div><div class="profile-cover">${p.photoURL?`<img class="avatar" style="object-fit:cover" src="${esc(p.photoURL)}" alt="Profile photo">`:`<div class="avatar">${esc((p.name||'M').slice(0,1).toUpperCase())}</div>`}<div><h2>${esc(p.name||'Mexora member')}</h2><div class="muted">📍 ${esc(p.city||'Location not set')} · ${esc(p.gender||'Rather not say')}</div></div></div><p style="white-space:pre-wrap">${esc(p.bio||'No bio added yet.')}</p><p><strong>Interests:</strong> ${esc(p.interests||'Not added')}</p><p><strong>Here for:</strong> ${esc(p.intent||'Friendship and dating')}</p><h3>Posts and images</h3><div id="profile-posts">Loading posts…</div>${uid!==currentUser.uid?`<button class="btn full" onclick="closeModal();startChat('${esc(uid)}','${esc(p.name||'Member')}')">Message ${esc(p.name||'member')}</button>`:''}`);
+    showModal(`<div class="modal-head"><h2>Member profile</h2><button class="pill" onclick="closeModal()">Close ✕</button></div><div class="profile-cover">${getAvatar(p.name, p.gender, 68)}<div><h2>${esc(p.name||'Mexora member')}</h2><div class="muted">📍 ${esc(p.city||'Location not set')} · ${esc(p.gender||'Rather not say')}</div></div></div><p style="white-space:pre-wrap">${esc(p.bio||'No bio added yet.')}</p><p><strong>Interests:</strong> ${esc(p.interests||'Not added')}</p><p><strong>Here for:</strong> ${esc(p.intent||'Friendship and dating')}</p><h3>Posts and images</h3><div id="profile-posts">Loading posts…</div>${uid!==currentUser.uid?`<button class="btn full" onclick="closeModal();startChat('${esc(uid)}','${esc(p.name||'Member')}')">Message ${esc(p.name||'member')}</button>`:''}`);
     const ps=await getDocs(query(collection(db,'posts'),where('ownerId','==',uid)));const arr=ps.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.createdAt?.seconds||0)-(a.createdAt?.seconds||0));
-    $('profile-posts').innerHTML=arr.length?arr.map(p=>`<div class="comment-row">${p.text?`<p>${esc(p.text)}</p>`:''}${p.imageURL?`<img class="media" src="${esc(p.imageURL)}" alt="Post image">`:''}<div class="small muted">${dateText(p.createdAt)}</div><button class="pill" onclick="openComments('${p.id}')">Comments</button></div>`).join(''):'<p class="muted">No posts yet.</p>';
+    $('profile-posts').innerHTML=arr.length?arr.map(p=>`<div class="comment-row">${p.text?`<p>${esc(p.text)}</p>`:''}<div class="small muted">${dateText(p.createdAt)}</div></div>`).join(''):'<p class="muted">No posts yet.</p>';
   }catch(e){console.error(e);showModal(`<div class="modal-head"><h2>Profile</h2><button class="pill" onclick="closeModal()">Close ✕</button></div><p>${esc(e.message||'Could not load profile.')}</p>`);}
 }
 
@@ -381,13 +373,13 @@ function startChats(){
     await Promise.all(snap.docs.map(async d => {
       const c = d.data();
       const other = (c.memberIds||[]).find(id => id !== currentUser.uid);
-      let prof = {name:'Member'};
+      let prof = {name:'Member', gender:'Rather not say'};
       if(other){ try { const ps = await getDoc(doc(db,'profiles',other)); if(ps.exists()) prof = ps.data(); } catch(err) {} }
       list.push({id:d.id, other, profile:prof, updatedAt:c.updatedAt});
     }));
     list.sort((a,b)=>(b.updatedAt?.seconds||0)-(a.updatedAt?.seconds||0));
     $('chat-list').innerHTML = list.length 
-      ? list.map(c=>`<div class="chat-item ${activeConversation===c.id?'active':''}" onclick="openChat('${c.id}','${c.other}','${esc(c.profile.name||'Member')}')"><strong>${esc(c.profile.name||'Member')}</strong><div class="small muted">Tap to open</div></div>`).join('')
+      ? list.map(c=>`<div class="chat-item ${activeConversation===c.id?'active':''}" onclick="openChat('${c.id}','${c.other}','${esc(c.profile.name||'Member')}')">${getAvatar(c.profile.name, c.profile.gender, 32)}<strong style="margin-left:8px">${esc(c.profile.name||'Member')}</strong><div class="small muted">Tap to open</div></div>`).join('')
       : '<div class="empty">No conversations yet.</div>';
   }, e => { console.error(e); });
 }
@@ -404,16 +396,14 @@ async function startChat(uid,name){
   }catch(e){ console.error(e); toast('Could not start chat.'); }
 }
 
-// RESTORED STABLE CHAT FUNCTION
 async function openChat(id,otherUid,name){
   activeConversation=id;activeRecipient=otherUid;
   $('chat-title').textContent=name||'Conversation';$('chat-status').textContent='Private conversation';
   $('chat-text').disabled=false;$('send-chat').disabled=false;
+  cancelReply();
   
-  // Non-blocking read receipt
   updateDoc(doc(db,'conversations',id),{updatedAt:serverTimestamp()}).catch(e=>console.log('Read receipt failed'));
 
-  // Listener for read status
   onSnapshot(doc(db,'conversations',id), (docSnap) => {
     if(docSnap.exists()) {
       currentChatUpdatedAt = docSnap.data().updatedAt?.toMillis() || 0;
@@ -432,8 +422,14 @@ async function openChat(id,otherUid,name){
          tickHTML = `<span class="ticks"><svg class="tick ${isRead?'read':''}" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg></span>`;
       }
 
-      return `<div class="bubble ${mine?'mine':''}" ontouchstart="touchStart(event, '${esc(m.text||'')}')" ontouchend="touchEnd(event)">
+      let replyHTML = '';
+      if(m.replyTo) {
+        replyHTML = `<div style="background:rgba(0,0,0,0.2);border-left:2px solid #fff;padding:4px 8px;border-radius:4px;margin-bottom:6px;font-size:12px;opacity:0.8;">${esc(m.replyTo)}</div>`;
+      }
+
+      return `<div class="bubble ${mine?'mine':''}" ontouchstart="touchStart(event)" ontouchend="touchEnd(event)" data-msgid="${d.id}" data-text="${esc(m.text||'')}">
         <span class="swipe-reply-hint">↩️</span>
+        ${replyHTML}
         ${m.text?`<div>${esc(m.text)}</div>`:''}
         <div class="small muted" style="margin-top:4px;">${mine?'You':esc(name||'Member')} · ${dateText(m.createdAt)} ${tickHTML}</div>
       </div>`;
@@ -451,21 +447,44 @@ async function sendChatMessage(){
   if(!text){toast('Write a message.');return;}
   $('send-chat').disabled=true;
   try{
-    await addDoc(collection(db,'conversations',activeConversation,'messages'),{senderId:currentUser.uid,recipientId:activeRecipient,text,createdAt:serverTimestamp()});
+    const msgData = {senderId:currentUser.uid,recipientId:activeRecipient,text,createdAt:serverTimestamp()};
+    if(replyingToText) msgData.replyTo = replyingToText;
+    
+    await addDoc(collection(db,'conversations',activeConversation,'messages'),msgData);
     updateDoc(doc(db,'conversations',activeConversation),{updatedAt:serverTimestamp()}).catch(e=>console.log(e));
     $('chat-text').value='';
+    cancelReply();
   }catch(e){console.error(e);toast(e.message||'Message failed.');}finally{$('send-chat').disabled=false;}
 }
 
-// Swipe Right to Reply Logic
+// WhatsApp Style Swipe to Reply
 let touchStartX = 0;
 let touchStartY = 0;
-window.touchStart = function(e, text) {
+let touchStartTime = 0;
+
+window.touchStart = function(e) {
+  const bubble = e.currentTarget;
   touchStartX = e.changedTouches[0].screenX;
   touchStartY = e.changedTouches[0].screenY;
-  const bubble = e.currentTarget;
-  bubble.dataset.text = text;
+  touchStartTime = Date.now();
   bubble.style.transition = 'none';
+};
+
+window.touchMove = function(e) {
+  const bubble = e.currentTarget;
+  if(!touchStartX) return;
+  
+  const currentX = e.changedTouches[0].screenX;
+  const currentY = e.changedTouches[0].screenY;
+  const diffX = currentX - touchStartX;
+  const diffY = currentY - touchStartY;
+  
+  // Only allow swipe right, and prevent scrolling horizontally
+  if(diffX > 0 && Math.abs(diffY) < 30) {
+    if(e.cancelable) e.preventDefault(); 
+    bubble.style.transform = `translateX(${Math.min(diffX, 80)}px)`;
+    bubble.querySelector('.swipe-reply-hint').style.opacity = Math.min(diffX/60, 1);
+  }
 };
 
 window.touchEnd = function(e) {
@@ -475,38 +494,41 @@ window.touchEnd = function(e) {
   
   const diffX = touchEndX - touchStartX;
   const diffY = touchEndY - touchStartY;
+  const timeElapsed = Date.now() - touchStartTime;
   
   bubble.style.transition = 'transform 0.2s';
   bubble.style.transform = 'translateX(0)';
   bubble.querySelector('.swipe-reply-hint').style.opacity = 0;
   
+  // Trigger reply if swiped right enough
   if (diffX > 60 && Math.abs(diffY) < 40) {
-    const quoteText = bubble.dataset.text;
-    if(quoteText) {
-      $('chat-text').value = `> ${quoteText}\n\n`;
-      $('chat-text').focus();
-      $('chat-text').scrollTop = $('chat-text').scrollHeight;
+    const msgId = bubble.dataset.msgid;
+    const text = bubble.dataset.text;
+    if(msgId && text) {
+      setReply(msgId, text);
     }
   }
+  touchStartX = 0; 
 };
 
-window.touchMove = function(e) {
-  const bubble = e.currentTarget;
-  const diffX = e.changedTouches[0].screenX - touchStartX;
-  const diffY = e.changedTouches[0].screenY - touchStartY;
-  
-  if(diffX > 0 && Math.abs(diffY) < 30) {
-    bubble.style.transition = 'none';
-    bubble.style.transform = `translateX(${Math.min(diffX, 100)}px)`;
-    bubble.querySelector('.swipe-reply-hint').style.opacity = Math.min(diffX/60, 1);
-  }
-};
 document.addEventListener('touchmove', (e) => {
   if(e.target.closest('.bubble')) {
     window.touchMove(e);
   }
 }, {passive: false});
 
+window.setReply = function(id, text) {
+  replyingToText = text;
+  $('reply-text').textContent = text;
+  $('reply-preview').style.display = 'block';
+  $('chat-text').focus();
+};
+
+window.cancelReply = function() {
+  replyingToText = null;
+  $('reply-preview').style.display = 'none';
+  $('reply-text').textContent = '';
+};
 
 function toast(message){const el=$('toast');el.textContent=message;el.classList.remove('hidden');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.classList.add('hidden'),3500);}
 window.showAuth=showAuth;window.navigate=navigate;window.logout=logout;window.createPost=createPost;window.likePost=likePost;window.openComments=openComments;window.repostPost=repostPost;window.renderPeople=renderPeople;window.openProfile=openProfile;window.closeModal=closeModal;window.startChat=startChat;window.openChat=openChat;window.sendChatMessage=sendChatMessage;window.toast=toast;
@@ -522,4 +544,4 @@ onAuthStateChanged(auth,async user=>{
 showAuth('signup');
 </script>
 </body>
-          </html>
+</html>
