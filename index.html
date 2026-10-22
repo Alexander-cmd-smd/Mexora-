@@ -114,7 +114,7 @@ function postCard(p,isRepost=false){
   const post=p.original||p;
   const author=p.repostedBy?{name:p.repostedBy,uid:p.reposterId}:post;
   const image=post.imageURL?`<img class="media" src="${esc(post.imageURL)}" alt="Post image" loading="lazy">`:'';
-  const targetUid = post.ownerId || p.reposterId || p.ownerId || ''; // Fixed fallback for reposts
+  const targetUid = post.ownerId || p.reposterId || p.ownerId || ''; 
   return `<article class="card"><div class="post-head clickable" onclick="openProfile('${esc(targetUid)}')"><div class="avatar">${post.authorPhoto?`<img src="${esc(post.authorPhoto)}" style="width:42px;height:42px;object-fit:cover;border-radius:50%">`:esc((post.authorName||author.name||'M').slice(0,1).toUpperCase())}</div><div><strong>${esc(post.authorName||author.name||'Mexora member')}</strong><div class="small muted">${esc(post.city||'Worldwide')} · ${dateText(post.createdAt)}</div></div>${isRepost?'<span class="small muted" style="margin-left:auto">🔁 Reposted</span>':''}</div>${isRepost&&p.note?`<p>${esc(p.note)}</p>`:''}${post.text?`<p style="line-height:1.65;white-space:pre-wrap">${esc(post.text)}</p>`:''}${image}<div class="post-actions"><button onclick="likePost('${p.id||post.id}')">♡ Like</button><button onclick="openComments('${post.id||p.postId}')">💬 Comments</button><button onclick="repostPost('${post.id||p.postId}')">🔁 Repost</button></div></article>`;
 }
 function dateText(ts){try{return ts?.toDate?ts.toDate().toLocaleString(): 'Just now';}catch{return 'Just now';}}
@@ -125,18 +125,15 @@ async function openComments(postId){if(!postId)return;showModal(`<div class="mod
 async function repostPost(postId){try{const p=postsCache.find(x=>x.id===postId);const source=p||await (async()=>{const s=await getDoc(doc(db,'posts',postId));return s.exists()?{id:s.id,...s.data()}:null;})();if(!source){toast('Original post was not found.');return;}await addDoc(collection(db,'reposts'),{ownerId:currentUser.uid,reposterId:currentUser.uid,repostedBy:currentProfile.name||currentUser.displayName||'Member',postId,original:source,note:'',createdAt:serverTimestamp()});toast('Reposted! See the Reposts tab.');}catch(e){console.error(e);toast('Repost failed. Check Firestore rules.');}}
 function startReposts(){if(repostUnsub)repostUnsub();repostUnsub=onSnapshot(query(collection(db,'reposts'),orderBy('createdAt','desc')),snap=>{$('repost-feed').innerHTML=snap.empty?'<div class="empty">No reposts yet.</div>':snap.docs.map(d=>postCard({id:d.id,...d.data()},true)).join('');},e=>{console.error(e);$('repost-feed').innerHTML='<div class="empty">Could not load reposts. Check Firestore rules.</div>';});}
 async function renderPeople(){const queryText=($('city-filter')?.value||'').trim().toLowerCase();try{const snap=await getDocs(collection(db,'profiles'));const list=snap.docs.map(d=>d.data()).filter(p=>p.uid!==currentUser?.uid&&(!queryText||(p.city||'').toLowerCase().includes(queryText)));$('people-list').innerHTML=list.length?list.map(p=>`<div class="card person clickable" role="button" tabindex="0" data-profile-uid="${esc(p.uid)}" aria-label="Open ${esc(p.name||'member')} profile"><div class="avatar">${p.photoURL?`<img src="${esc(p.photoURL)}" style="width:42px;height:42px;border-radius:50%;object-fit:cover">`:esc((p.name||'M').slice(0,1).toUpperCase())}</div><div style="flex:1;min-width:0"><strong>${esc(p.name||'Mexora member')}</strong><div class="small muted">📍 ${esc(p.city||'Location not set')}</div><div class="small muted">${esc(p.interests||'')}</div><div class="small">${esc(p.intent||'')}</div></div><button class="btn secondary" type="button" data-message-uid="${esc(p.uid)}" data-message-name="${esc(p.name||'Member')}">Message</button></div>`).join(''):'<div class="empty">No members found. Try another city.</div>';}catch(e){console.error(e);$('people-list').innerHTML='<div class="empty">Could not load members. Check Firestore rules.</div>';}}
-// Use delegated taps so opening a profile works reliably on phones as well as computers.
 $('people-list').addEventListener('click',e=>{const messageButton=e.target.closest('[data-message-uid]');if(messageButton){e.stopPropagation();startChat(messageButton.dataset.messageUid,messageButton.dataset.messageName||'Member');return;}const card=e.target.closest('[data-profile-uid]');if(card)openProfile(card.dataset.profileUid);});
 $('people-list').addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches('[data-profile-uid]')){e.preventDefault();openProfile(e.target.dataset.profileUid);}});
 async function openProfile(uid){if(!uid){toast('This member profile has no user ID yet.');return;}showModal('<div class="empty">Loading profile…</div>');try{const snap=await getDoc(doc(db,'profiles',uid));if(!snap.exists())throw new Error('Profile not found.');const p=snap.data();showModal(`<div class="modal-head"><h2>Member profile</h2><button class="pill" onclick="closeModal()">Close ✕</button></div><div class="profile-cover">${p.photoURL?`<img class="avatar" style="object-fit:cover" src="${esc(p.photoURL)}" alt="Profile photo">`:`<div class="avatar">${esc((p.name||'M').slice(0,1).toUpperCase())}</div>`}<div><h2>${esc(p.name||'Mexora member')}</h2><div class="muted">📍 ${esc(p.city||'Location not set')}</div></div></div><p style="white-space:pre-wrap">${esc(p.bio||'No bio added yet.')}</p><p><strong>Interests:</strong> ${esc(p.interests||'Not added')}</p><p><strong>Here for:</strong> ${esc(p.intent||'Friendship and dating')}</p><h3>Posts and images</h3><div id="profile-posts">Loading posts…</div>${uid!==currentUser.uid?`<button class="btn full" onclick="closeModal();startChat('${esc(uid)}','${esc(p.name||'Member')}')">Message ${esc(p.name||'member')}</button>`:''}`);const ps=await getDocs(query(collection(db,'posts'),where('ownerId','==',uid)));const arr=ps.docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(b.createdAt?.seconds||0)-(a.createdAt?.seconds||0));$('profile-posts').innerHTML=arr.length?arr.map(p=>`<div class="comment-row">${p.text?`<p>${esc(p.text)}</p>`:''}${p.imageURL?`<img class="media" src="${esc(p.imageURL)}" alt="Post image">`:''}<div class="small muted">${dateText(p.createdAt)}</div><button class="pill" onclick="openComments('${p.id}')">Comments</button></div>`).join(''):'<p class="muted">No posts yet.</p>';}catch(e){console.error(e);showModal(`<div class="modal-head"><h2>Profile</h2><button class="pill" onclick="closeModal()">Close ✕</button></div><p>${esc(e.message||'Could not load profile. Check Firestore rules.')}</p>`);}}
 function showModal(html){let root=$('modal-root');if(!root){root=document.createElement('div');root.id='modal-root';document.body.appendChild(root);}root.innerHTML=`<div class="modal-backdrop" onclick="if(event.target===this)closeModal()"><div class="modal">${html}</div></div>`;}function closeModal(){$('modal-root')?.remove();}
 
-// FIXED: Chat functions
 function startChats(){
   if(chatListUnsub)chatListUnsub();
   chatListUnsub=onSnapshot(query(collection(db,'conversations'),where('memberIds','array-contains',currentUser.uid)),async snap=>{
     const list=[];
-    // Use Promise.all to prevent blocking & wrap in try/catch to prevent silent crashes
     await Promise.all(snap.docs.map(async d => {
       const c = d.data();
       const other = (c.memberIds||[]).find(id => id !== currentUser.uid);
@@ -187,7 +184,7 @@ async function openChat(id,otherUid,name){
   $('chat-title').textContent=name||'Conversation';
   $('chat-status').textContent='Private conversation';
   $('chat-text').disabled=false;
-  $('chat-image').disabled=true; // Storage not enabled
+  $('chat-image').disabled=true; 
   $('send-chat').disabled=false;
   
   if(messageUnsub)messageUnsub();
@@ -201,7 +198,6 @@ async function openChat(id,otherUid,name){
     console.error(e);
     toast('Could not load messages. Check Firestore rules.');
   });
-  // Removed startChats() from here because it causes unnecessary reloading.
 }
 
 async function sendChatMessage(){
