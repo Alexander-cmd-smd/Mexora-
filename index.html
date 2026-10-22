@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090b14">
+<title>Mexora — One World, New Connections</title>
+
+<style>
+:root {
+  --bg: #090b14;
+  --card: #131827;
+  --purple: #8b5cf6;
+  --pink: #ec4899;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --border: #273047;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+}
+
+button, input, select, textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+header {
+  padding: 18px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: rgba(9,11,20,.96);
+  z-index: 10;
+}
+
+.logo {
+  font-size: 27px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  background: linear-gradient(90deg, #a78bfa, #f472b6);
+  color: transparent;
+  background-clip: text;
+}
+
+header button, .secondary {
+  background: var(--card);
+  color: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 14px;
+}
+
+.hero {
+  text-align: center;
+  padding: 65px 20px 45px;
+  background:
+    radial-gradient(ellipse at top, #35205b 0%, transparent 65%);
+}
+
+.badge {
+  display: inline-block;
+  padding: 8px 14px;
+  border: 1px solid #59418d;
+  color: #c4b5fd;
+  border-radius: 30px;
+  font-size: 12px;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  font-size: clamp(38px, 9vw, 64px);
+  line-height: 1.08;
+  margin: 0 auto 18px;
+  max-width: 750px;
+}
+
+.gradient {
+  background: linear-gradient(90deg, #a78bfa, #f472b6);
+  color: transparent;
+  background-clip: text;
+}
+
+.hero p {
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 500px;
+  margin: 0 auto 25px;
+}
+
+.primary {
+  background: linear-gradient(100deg, var(--purple), var(--pink));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 20px;
+  font-weight: bold;
+}
+
+section {
+  padding: 28px 5%;
+}
+
+.section-title {
+  margin-bottom: 20px;
+}
+
+.section-title p {
+  color: var(--muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 22px;
+}
+
+.icon {
+  font-size: 30px;
+  margin-bottom: 12px;
+}
+
+.card p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.view {
+  display: none;
+  min-height: 60vh;
+}
+
+.view.active {
+  display: block;
+}
+
+form {
+  max-width: 440px;
+  margin: 25px auto;
+}
+
+form input, form select, form textarea {
+  display: block;
+  width: 100%;
+  margin: 12px 0;
+  padding: 14px;
+  background: #0d1220;
+  color: white;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+form label {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+form button {
+  width: 100%;
+  margin-top: 12px;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+nav button {
+  background: transparent;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+nav button.active {
+  color: white;
+  border-color: var(--purple);
+  background: #21183b;
+}
+
+.post {
+  margin: 15px 0;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 5%;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.8;
+}
+
+.notice {
+  font-size: 13px;
+  color: #fbbf24;
+  line-height: 1.6;
+}
+
+@media (max-width: 480px) {
+  header { padding: 15px; }
+  .hero { padding-top: 48px; }
+  section { padding: 24px 16px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">mexora.</div>
+  <button onclick="showView('signup')">Join Mexora ↗</button>
+</header>
+
+<main>
+
+<div id="home" class="view active">
+
+  <div class="hero">
+    <div class="badge">🌍 YOUR WORLD. YOUR PEOPLE.</div>
+    <h1>One World.<br><span class="gradient">New Connections.</span></h1>
+    <p>
+      Meet new people, discover different cultures, find friendship
+      and explore the possibility of love. Your next connection
+      could be anywhere in the world.
+    </p>
+    <button class="primary" onclick="showView('signup')">
+      Create Your Account →
+    </button>
+  </div>
+
+  <section>
+    <div class="section-title">
+      <h2>A world of possibilities</h2>
+      <p>Find your people, wherever they are.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="icon">🌎</div>
+        <h3>Discover People</h3>
+        <p>Explore a worldwide community and connect through shared interests.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">❤️</div>
+        <h3>Daily Match</h3>
+        <p>Discover a potential connection with one special daily suggestion.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">🤝</div>
+        <h3>Real Friendships</h3>
+        <p>Meet people, exchange ideas and build meaningful friendships.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon">💬</div>
+        <h3>Share Your World</h3>
+        <p>Share your thoughts and learn about life in different places.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero">
+    <h2>Someone out there<br>is waiting to meet you.</h2>
+    <p>Your next friendship, conversation or love story starts with a connection.</p>
+    <button class="primary" onclick="showView('signup')">
+      Get Started — It's Free
+    </button>
+  </section>
+
+</div>
+
+<div id="signup" class="view">
+  <section>
+    <div class="section-title" style="text-align:center">
+      <div class="logo">mexora.</div>
+      <h2>Create your account</h2>
+      <p>Join a world full of new connections.</p>
+    </div>
+
+    <form id="signupForm">
+      <label>Your display name</label>
+      <input id="name" required maxlength="40" placeholder="What should people call you?">
+
+      <label>Email address</label>
+      <input id="email" type="email" required placeholder="you@example.com">
+
+      <label>City</label>
+      <input id="city" required maxlength="60" placeholder="e.g. Lagos">
+
+      <label>Country</label>
+      <input id="country" required maxlength="60" placeholder="e.g. Nigeria">
+
+      <label>I'm interested in</label>
+      <select id="interest" required>
+        <option value="">Choose one</option>
+        <option>Friendship</option>
+        <option>Dating</option>
+        <option>Both friendship and dating</option>
+      </select>
+
+      <label>Password (demo only)</label>
+      <input id="password" type="password" required minlength="8"
+      autocomplete="new-password" placeholder="At least 8 characters">
+
+      <p class="notice">
+        Prototype only: this form does not create a secure account.
+        Do not enter a real password. Backend authentication is not connected yet.
+      </p>
+
+      <button class="primary" type="submit">Preview My Account</button>
+      <button class="secondary" type="button" onclick="showView('login')">
+        Already joined? Log in
+      </button>
+    </form>
+  </section>
+</div>
+
+<div id="login" class="view">
+  <section>
+    <div class="section-title" style="text-align:center">
+      <h2>Welcome back</h2>
+      <p>Your world of connections awaits.</p>
+    </div>
+
+    <form id="loginForm">
+      <label>Email address</label>
+      <input id="loginEmail" type="email" required placeholder="you@example.com">
+      <label>Password</label>
+      <input type="password" required placeholder="Password">
+      <p class="notice">Demo screen only. Real login is not connected.</p>
+      <button class="primary" type="submit">Continue</button>
+    </form>
+  </section>
+</div>
+
+<div id="dashboard" class="view">
+  <section>
+    <h2 id="welcomeUser">Welcome to Mexora!</h2>
+    <p id="userLocation" style="color:#94a3b8"></p>
+
+    <nav>
+      <button class="active" onclick="showTab('feed',this)">🏠 Home</button>
+      <button onclick="showTab('discover',this)">🌍 Discover</button>
+      <button onclick="showTab('match',this)">❤️ Daily Match</button>
+      <button onclick="showTab('messages',this)">💬 Messages</button>
+      <button onclick="showTab('profile',this)">👤 Profile</button>
+    </nav>
+
+    <div id="feed" class="tab">
+      <h3>Your community</h3>
+      <form id="postForm">
+        <textarea id="postText" required maxlength="500"
+        placeholder="Share a thought with the world..."></textarea>
+        <button class="primary" type="submit">Create Post</button>
+      </form>
+      <div id="posts"></div>
+    </div>
+
+    <div id="discover" class="tab" hidden>
+      <h3>Discover your world 🌎</h3>
+      <p>When Mexora's backend is connected, you'll discover registered members around the world.</p>
+      <div class="card">🌍 Worldwide discovery is coming soon.</div>
+    </div>
+
+    <div id="match" class="tab" hidden>
+      <h3>Your Daily Match ❤️</h3>
+      <div class="card">
+        <div class="icon">✨</div>
+        <h3>Your next connection starts here.</h3>
+        <p>Daily matching will become available after we connect the user database and matching system.</p>
+      </div>
+    </div>
+
+    <div id="messages" class="tab" hidden>
+      <h3>Your Messages 💬</h3>
+      <div class="card">
+        Messaging will be enabled after secure accounts and backend services are connected.
+      </div>
+    </div>
+
+    <div id="profile" class="tab" hidden>
+      <h3>Your Profile 👤</h3>
+      <div class="card" id="profileInfo"></div>
+      <button class="secondary" onclick="logout()">Log out</button>
+    </div>
+  </section>
+</div>
+
+</main>
+
+<footer>
+  <div class="logo">mexora.</div>
+  One World. New Connections.<br>
+  Meet with respect. Connect with kindness.<br>
+  © 2026 Mexora — First prototype
+</footer>
+
+<script>
+const $ = id => document.getElementById(id);
+
+function showView(id) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  $(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function showTab(id, button) {
+  document.querySelectorAll('.tab').forEach(t => t.hidden = true);
+  $(id).hidden = false;
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+  button.classList.add('active');
+}
+
+let currentUser = null;
+
+$('signupForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  currentUser = {
+    name: $('name').value.trim(),
+    email: $('email').value.trim(),
+    city: $('city').value.trim(),
+    country: $('country').value.trim(),
+    interest: $('interest').value
+  };
+
+  $('welcomeUser').textContent = 'Welcome, ' + currentUser.name + '! 👋';
+  $('userLocation').textContent = currentUser.city + ', ' + currentUser.country;
+  $('profileInfo').textContent =
+    currentUser.name + ' · ' + currentUser.city + ', ' +
+    currentUser.country + ' · ' + currentUser.interest;
+
+  $('password').value = '';
+  showView('dashboard');
+});
+
+$('loginForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  alert('Real login is not connected yet. Please use the demo registration to preview Mexora.');
+});
+
+$('postForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  if (!currentUser) {
+    alert('Please register first.');
+    showView('signup');
+    return;
+  }
+
+  const card = document.createElement('div');
+  card.className = 'card post';
+
+  const author = document.createElement('strong');
+  author.textContent = currentUser.name + ' · ' + currentUser.city;
+
+  const content = document.createElement('p');
+  content.textContent = $('postText').value.trim();
+
+  card.append(author, content);
+  $('posts').prepend(card);
+  $('postText').value = '';
+});
+
+function logout() {
+  currentUser = null;
+  $('signupForm').reset();
+  $('loginForm').reset();
+  $('posts').replaceChildren();
+  showView('home');
+}
+</script>
+
+</body>
+</html>
