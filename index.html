@@ -7,14 +7,13 @@
 <title>MEXORA — One World. New Connections.</title>
 <style>
 :root{--bg:#0c0a14;--panel:#171323;--panel2:#211a32;--text:#f7f4ff;--muted:#aaa2bd;--purple:#a78bfa;--pink:#f472b6;--line:#342a49;--good:#8be0bd}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#211539 0%,var(--bg) 48%);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh;overflow-x:hidden}button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:none!important}.wrap{max-width:1120px;margin:auto;padding:22px}.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:2px;font-size:22px}.logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--purple),var(--pink));display:grid;place-items:center;color:#160f26;font-weight:1000}.muted{color:var(--muted)}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:28px}.pill{border:1px solid var(--line);background:#ffffff08;color:var(--text);padding:10px 15px;border-radius:999px}.btn{border:0;border-radius:12px;padding:12px 16px;color:#180f25;font-weight:800;background:linear-gradient(110deg,var(--purple),var(--pink));box-shadow:0 8px 25px #a78bfa22}.btn.secondary{background:#ffffff0a;color:var(--text);border:1px solid var(--line);box-shadow:none}.btn:disabled{opacity:.45;cursor:not-allowed}.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:center;padding:30px 0 45px}.eyebrow{color:var(--purple);font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase}.hero h1{font-size:clamp(38px,6vw,68px);line-height:1.02;letter-spacing:-2px;margin:14px 0}.gradient{background:linear-gradient(100deg,#c4b5fd,#f9a8d4);color:transparent;background-clip:text}.hero p{font-size:17px;line-height:1.7;color:var(--muted);max-width:540px}.hero-card,.card,.auth-card{background:linear-gradient(160deg,#211a32ee,#151120f5);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 20px 70px #0002}.orb{height:190px;border-radius:18px;background:radial-gradient(circle at 35% 35%,#f9a8d4 0,#a78bfa 24%,#4c2b76 50%,#191326 75%);display:grid;place-items:center;font-size:55px;margin-bottom:18px}.feature-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.feature{padding:9px 12px;border:1px solid var(--line);border-radius:999px;color:#d9d1e8;font-size:13px}.auth-area{max-width:470px;margin:10px auto 70px}.auth-card h2{margin:8px 0}.tabs{display:flex;background:#0e0b17;padding:5px;border-radius:12px;margin:20px 0}.tabs button{flex:1;border:0;padding:11px;border-radius:9px;background:transparent;color:var(--muted);font-weight:700}.tabs button.active{background:var(--panel2);color:var(--text)}label{display:block;font-size:13px;color:#d9d1e8;margin:14px 0 7px}input,select,textarea{width:100%;border:1px solid var(--line);border-radius:11px;background:#0e0b17;color:var(--text);padding:13px;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--purple)}.full{width:100%;margin-top:17px}.small{font-size:12px;line-height:1.6}.notice{padding:11px 13px;border-radius:10px;background:#8be0bd12;border:1px solid #8be0bd33;color:var(--good);font-size:13px;margin-top:12px}.error{color:#fda4af;font-size:13px;margin-top:10px}.app-layout{display:grid;grid-template-columns:210px minmax(0,1fr);gap:22px}.sidebar{align-self:start;position:sticky;top:18px}.nav{display:grid;gap:8px;margin-top:24px}.nav button{width:100%;text-align:left;padding:13px;border:1px solid transparent;border-radius:12px;background:transparent;color:var(--muted)}.nav button.active,.nav button:hover{background:var(--panel2);border-color:var(--line);color:var(--text)}.main-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.main-head h1{margin:0;font-size:27px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.card{padding:18px;margin-bottom:14px}.card h3{margin:0 0 8px}.post-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}.avatar{width:42px;height:42px;display:grid;place-items:center;border-radius:50%;background:linear-gradient(135deg,#a78bfa,#f472b6);font-weight:900;color:#170f25;flex-shrink:0}.post-actions{display:flex;gap:8px;margin-top:13px}.post-actions button{border:1px solid var(--line);background:#ffffff08;color:var(--text);padding:8px 12px;border-radius:10px}.person{display:flex;gap:12px;align-items:center}.person[role=button]{cursor:pointer}.person[role=button]:focus{outline:2px solid var(--purple);outline-offset:2px}.person .btn{margin-left:auto}.match-art{height:130px;border-radius:16px;background:radial-gradient(circle at 30% 40%,#f9a8d4,#a78bfa 35%,#34204f 75%);display:grid;place-items:center;font-size:42px;margin-bottom:14px}.empty{padding:28px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:14px}.bottom-nav{display:none}.footer{text-align:center;color:#766e89;font-size:12px;padding:24px 0 10px}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#29203c;border:1px solid var(--line);padding:12px 17px;border-radius:12px;z-index:10;max-width:90%;box-shadow:0 12px 35px #0007}.section{display:none}.section.active{display:block}.media{max-width:100%;max-height:420px;object-fit:cover;border-radius:14px;margin-top:10px}.clickable{cursor:pointer}.profile-cover{display:flex;align-items:center;gap:14px}.profile-cover .avatar{width:68px;height:68px;font-size:24px}.modal-backdrop{position:fixed;inset:0;background:#05030bcc;z-index:30;display:flex;align-items:center;justify-content:center;padding:16px}.modal{width:min(650px,100%);max-height:90vh;overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px}.modal-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.comment-row{padding:10px 0;border-bottom:1px solid var(--line)}.chat-layout{display:grid;grid-template-columns:minmax(150px,.7fr) minmax(0,1.3fr);gap:12px}.chat-list{max-height:400px;overflow:auto}.chat-item{padding:12px;border:1px solid var(--line);border-radius:12px;margin-bottom:8px;cursor:pointer}.chat-item.active{background:var(--panel2)}.chat-window{min-height:300px;display:flex;flex-direction:column}.chat-messages{flex:1;max-height:330px;overflow:auto;padding:8px;overflow-x:hidden}.bubble{max-width:85%;padding:10px 12px;border-radius:14px;background:var(--panel2);margin:8px 0;overflow-wrap:anywhere;position:relative}.bubble.mine{margin-left:auto;background:#5b3b7e}.compose-row{display:flex;gap:8px;align-items:center}.compose-row input{min-width:0}.post-image-label{display:inline-block;padding:8px 12px;border:1px solid var(--line);border-radius:10px;cursor:pointer;color:var(--text)}
-/* New Styles for Features */
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#211539 0%,var(--bg) 48%);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;min-height:100vh;overflow-x:hidden}button,input,select,textarea{font:inherit}button{cursor:pointer}.hidden{display:none!important}.wrap{max-width:1120px;margin:auto;padding:22px}.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:2px;font-size:22px}.logo{width:36px;height:36px;border-radius:12px;background:linear-gradient(135deg,var(--purple),var(--pink));display:grid;place-items:center;color:#160f26;font-weight:1000}.muted{color:var(--muted)}.topbar{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:28px}.pill{border:1px solid var(--line);background:#ffffff08;color:var(--text);padding:10px 15px;border-radius:999px}.btn{border:0;border-radius:12px;padding:12px 16px;color:#180f25;font-weight:800;background:linear-gradient(110deg,var(--purple),var(--pink));box-shadow:0 8px 25px #a78bfa22}.btn.secondary{background:#ffffff0a;color:var(--text);border:1px solid var(--line);box-shadow:none}.btn:disabled{opacity:.45;cursor:not-allowed}.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:24px;align-items:center;padding:30px 0 45px}.eyebrow{color:var(--purple);font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase}.hero h1{font-size:clamp(38px,6vw,68px);line-height:1.02;letter-spacing:-2px;margin:14px 0}.gradient{background:linear-gradient(100deg,#c4b5fd,#f9a8d4);color:transparent;background-clip:text}.hero p{font-size:17px;line-height:1.7;color:var(--muted);max-width:540px}.hero-card,.card,.auth-card{background:linear-gradient(160deg,#211a32ee,#151120f5);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 20px 70px #0002}.orb{height:190px;border-radius:18px;background:radial-gradient(circle at 35% 35%,#f9a8d4 0,#a78bfa 24%,#4c2b76 50%,#191326 75%);display:grid;place-items:center;font-size:55px;margin-bottom:18px}.feature-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.feature{padding:9px 12px;border:1px solid var(--line);border-radius:999px;color:#d9d1e8;font-size:13px}.auth-area{max-width:470px;margin:10px auto 70px}.auth-card h2{margin:8px 0}.tabs{display:flex;background:#0e0b17;padding:5px;border-radius:12px;margin:20px 0}.tabs button{flex:1;border:0;padding:11px;border-radius:9px;background:transparent;color:var(--muted);font-weight:700}.tabs button.active{background:var(--panel2);color:var(--text)}label{display:block;font-size:13px;color:#d9d1e8;margin:14px 0 7px}input,select,textarea{width:100%;border:1px solid var(--line);border-radius:11px;background:#0e0b17;color:var(--text);padding:13px;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--purple)}.full{width:100%;margin-top:17px}.small{font-size:12px;line-height:1.6}.notice{padding:11px 13px;border-radius:10px;background:#8be0bd12;border:1px solid #8be0bd33;color:var(--good);font-size:13px;margin-top:12px}.error{color:#fda4af;font-size:13px;margin-top:10px}.app-layout{display:grid;grid-template-columns:210px minmax(0,1fr);gap:22px}.sidebar{align-self:start;position:sticky;top:18px}.nav{display:grid;gap:8px;margin-top:24px}.nav button{width:100%;text-align:left;padding:13px;border:1px solid transparent;border-radius:12px;background:transparent;color:var(--muted)}.nav button.active,.nav button:hover{background:var(--panel2);border-color:var(--line);color:var(--text)}.main-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}.main-head h1{margin:0;font-size:27px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.card{padding:18px;margin-bottom:14px}.card h3{margin:0 0 8px}.post-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}.avatar{width:42px;height:42px;display:grid;place-items:center;border-radius:50%;background:linear-gradient(135deg,#a78bfa,#f472b6);font-weight:900;color:#170f25;flex-shrink:0}.post-actions{display:flex;gap:8px;margin-top:13px}.post-actions button{border:1px solid var(--line);background:#ffffff08;color:var(--text);padding:8px 12px;border-radius:10px}.person{display:flex;gap:12px;align-items:center}.person[role=button]{cursor:pointer}.person[role=button]:focus{outline:2px solid var(--purple);outline-offset:2px}.person .btn{margin-left:auto}.match-art{height:130px;border-radius:16px;background:radial-gradient(circle at 30% 40%,#f9a8d4,#a78bfa 35%,#34204f 75%);display:grid;place-items:center;font-size:42px;margin-bottom:14px}.empty{padding:28px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:14px}.bottom-nav{display:none}.footer{text-align:center;color:#766e89;font-size:12px;padding:24px 0 10px}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#29203c;border:1px solid var(--line);padding:12px 17px;border-radius:12px;z-index:10;max-width:90%;box-shadow:0 12px 35px #0007}.section{display:none}.section.active{display:block}.media{max-width:100%;max-height:420px;object-fit:cover;border-radius:14px;margin-top:10px}.clickable{cursor:pointer}.profile-cover{display:flex;align-items:center;gap:14px}.profile-cover .avatar{width:68px;height:68px;font-size:24px}.modal-backdrop{position:fixed;inset:0;background:#05030bcc;z-index:30;display:flex;align-items:center;justify-content:center;padding:16px}.modal{width:min(650px,100%);max-height:90vh;overflow:auto;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px}.modal-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.comment-row{padding:10px 0;border-bottom:1px solid var(--line)}.chat-layout{display:grid;grid-template-columns:minmax(150px,.7fr) minmax(0,1.3fr);gap:12px}.chat-list{max-height:400px;overflow:auto}.chat-item{padding:12px;border:1px solid var(--line);border-radius:12px;margin-bottom:8px;cursor:pointer}.chat-item.active{background:var(--panel2)}.chat-window{min-height:300px;display:flex;flex-direction:column}.chat-messages{flex:1;max-height:330px;overflow:auto;padding:8px;overflow-x:hidden}.bubble{max-width:85%;padding:10px 12px;border-radius:14px;background:var(--panel2);margin:8px 0;overflow-wrap:anywhere;position:relative;transition:transform 0.2s}.bubble.mine{margin-left:auto;background:#5b3b7e}.compose-row{display:flex;gap:8px;align-items:center}.compose-row input{min-width:0}.post-image-label{display:inline-block;padding:8px 12px;border:1px solid var(--line);border-radius:10px;cursor:pointer;color:var(--text)}
 .pass-wrap{position:relative}
 .pass-wrap input{padding-right:40px}
 .pass-wrap .toggle-pass{position:absolute;right:12px;top:50%;transform:translateY(-50%);cursor:pointer;color:var(--muted);user-select:none;font-size:18px}
 .ticks{display:inline-flex;align-items:center;margin-left:6px}
-.tick{width:14px;height:14px;fill:currentColor;color:#aaa2bd} /* Grey for sent */
-.tick.read{color:var(--pink)} /* Pink for read */
+.tick{width:14px;height:14px;fill:currentColor;color:#aaa2bd} 
+.tick.read{color:var(--pink)} 
 .swipe-reply-hint{position:absolute;right:-30px;top:50%;transform:translateY(-50%);opacity:0;transition:opacity 0.2s;font-size:20px;pointer-events:none}
 @media(max-width:560px){.chat-layout{grid-template-columns:1fr}.chat-list{max-height:160px}.compose-row{flex-wrap:wrap}}
 @media(max-width:760px){.wrap{padding:16px}.hero{grid-template-columns:1fr;padding-top:10px}.hero-card{display:none}.app-layout{display:block}.sidebar{position:static;margin-bottom:16px}.sidebar .brand{display:none}.nav{display:flex;overflow:auto;margin-top:0;padding-bottom:4px}.nav button{white-space:nowrap;width:auto}.grid{grid-template-columns:1fr}.topbar{margin-bottom:18px}.main-head h1{font-size:23px}.bottom-nav{display:none}.hero h1{letter-spacing:-1.3px}.auth-area{margin-bottom:35px}}
@@ -122,7 +121,6 @@ const $=id=>document.getElementById(id);
 
 let authMode='signup',currentUser=null,currentProfile={},feedUnsub=null,repostUnsub=null,chatListUnsub=null,messageUnsub=null,activeConversation=null,activeRecipient=null,postsCache=[],currentChatUpdatedAt=0;
 
-// 1. Password Toggle
 window.togglePassword = function() {
   const p = $('password');
   if (p.type === 'password') {
@@ -141,7 +139,7 @@ function showAuth(mode){
   $('signup-tab').classList.toggle('active',mode==='signup');
   $('login-tab').classList.toggle('active',mode==='login');
   $('name-field').classList.toggle('hidden',mode==='login');
-  $('gender-field').classList.toggle('hidden',mode==='login'); // Hide gender on login
+  $('gender-field').classList.toggle('hidden',mode==='login');
   $('auth-submit').textContent=mode==='signup'?'Create account':'Log in';
   $('auth-error').textContent='';$('auth-notice').classList.add('hidden');
 }
@@ -155,7 +153,6 @@ $('auth-form').addEventListener('submit',async e=>{
       if(!displayName)throw new Error('Please choose a display name.');
       const cr=await createUserWithEmailAndPassword(auth,email,password);
       await updateProfile(cr.user,{displayName});
-      // Save gender in profile
       await setDoc(doc(db,'profiles',cr.user.uid),{
         uid:cr.user.uid, name:displayName, gender:gender, photoURL:'', city:'', bio:'', intent:'Friendship and dating', interests:'', createdAt:serverTimestamp(), updatedAt:serverTimestamp()
       });
@@ -294,7 +291,6 @@ async function openProfile(uid){
 function showModal(html){let root=$('modal-root');if(!root){root=document.createElement('div');root.id='modal-root';document.body.appendChild(root);}root.innerHTML=`<div class="modal-backdrop" onclick="if(event.target===this)closeModal()"><div class="modal">${html}</div></div>`;}
 function closeModal(){$('modal-root')?.remove();}
 
-// Chat Features
 function startChats(){
   if(chatListUnsub)chatListUnsub();
   chatListUnsub=onSnapshot(query(collection(db,'conversations'),where('memberIds','array-contains',currentUser.uid)),async snap=>{
@@ -325,45 +321,45 @@ async function startChat(uid,name){
   }catch(e){ console.error(e); toast('Could not start chat.'); }
 }
 
+// SAFE CHAT OPENING
 async function openChat(id,otherUid,name){
   activeConversation=id;activeRecipient=otherUid;
   $('chat-title').textContent=name||'Conversation';$('chat-status').textContent='Private conversation';
-  $('chat-text').disabled=false;$('chat-image').disabled=true;$('send-chat').disabled=false;
+  $('chat-text').disabled=false;$('send-chat').disabled=false;
   
-  // Mark conversation as read (updates updatedAt, which we use for read receipts)
-  try { await updateDoc(doc(db,'conversations',id),{updatedAt:serverTimestamp()}); } catch(e){}
+  // 1. Mark as read safely (don't await, catch errors silently so it doesn't break chat)
+  updateDoc(doc(db,'conversations',id),{updatedAt:serverTimestamp()}).catch(e=>console.log('Read receipt failed:', e));
 
-  if(messageUnsub)messageUnsub();
-  
-  // Use a separate listener for the conversation to track read status
+  // 2. Listen for Conversation updates (for pink ticks)
   onSnapshot(doc(db,'conversations',id), (docSnap) => {
     if(docSnap.exists()) {
       currentChatUpdatedAt = docSnap.data().updatedAt?.toMillis() || 0;
-      // Force re-render if messages exist to show pink ticks
       if(document.querySelectorAll('.bubble').length > 0) {
-         renderMessages($('chat-messages').innerHTML.includes('Say hello')); // quick check if empty
+         renderMessages(false, currentMessagesCache); 
       }
     }
   });
 
+  // 3. Listen for Messages
+  if(messageUnsub)messageUnsub();
   messageUnsub=onSnapshot(query(collection(db,'conversations',id,'messages'),orderBy('createdAt','asc')),snap=>{
+    currentMessagesCache = snap.docs;
     renderMessages(snap.empty, snap.docs);
   },e=>{console.error(e);toast('Could not load messages.');});
 }
 
+let currentMessagesCache = [];
 function renderMessages(isEmpty, docs=[]) {
   if(isEmpty) {
     $('chat-messages').innerHTML = '<div class="empty">Say hello to start the conversation.</div>';
     return;
   }
-  if(!docs || docs.length === 0) return; // Prevent wiping if triggered by read receipt
+  if(!docs || docs.length === 0) return;
 
   $('chat-messages').innerHTML = docs.map(d=>{
     const m=d.data(),mine=m.senderId===currentUser.uid;
     const msgTime = m.createdAt?.toMillis() || 0;
     
-    // Read Logic: If I sent it, and the conversation's updatedAt is greater than message time, they opened it.
-    // We give a 2 second buffer to account for server timestamp delays.
     let tickHTML = '';
     if(mine) {
        const isRead = currentChatUpdatedAt > msgTime + 2000; 
@@ -377,7 +373,6 @@ function renderMessages(isEmpty, docs=[]) {
     </div>`;
   }).join('');
   
-  // Only scroll to bottom if we are near the bottom (prevents jumping while reading history)
   const chatBox = $('chat-messages');
   const isNearBottom = chatBox.scrollHeight - chatBox.scrollTop - chatBox.clientHeight < 150;
   if(isNearBottom) chatBox.scrollTop = chatBox.scrollHeight;
@@ -390,12 +385,12 @@ async function sendChatMessage(){
   $('send-chat').disabled=true;
   try{
     await addDoc(collection(db,'conversations',activeConversation,'messages'),{senderId:currentUser.uid,recipientId:activeRecipient,text,createdAt:serverTimestamp()});
-    await updateDoc(doc(db,'conversations',activeConversation),{updatedAt:serverTimestamp()});
+    // Update conversation timestamp, but don't let it block the message send if it fails
+    updateDoc(doc(db,'conversations',activeConversation),{updatedAt:serverTimestamp()}).catch(e=>console.log(e));
     $('chat-text').value='';
   }catch(e){console.error(e);toast(e.message||'Message failed.');}finally{$('send-chat').disabled=false;}
 }
 
-// Swipe Right to Reply Logic
 let touchStartX = 0;
 let touchStartY = 0;
 window.touchStart = function(e, text) {
@@ -416,8 +411,8 @@ window.touchEnd = function(e) {
   
   bubble.style.transition = 'transform 0.2s';
   bubble.style.transform = 'translateX(0)';
+  bubble.querySelector('.swipe-reply-hint').style.opacity = 0;
   
-  // If swiped right more than 60px and not vertically scrolling
   if (diffX > 60 && Math.abs(diffY) < 40) {
     const quoteText = bubble.dataset.text;
     if(quoteText) {
@@ -428,7 +423,6 @@ window.touchEnd = function(e) {
   }
 };
 
-// Add touch move to visually pull the bubble
 window.touchMove = function(e) {
   const bubble = e.currentTarget;
   const diffX = e.changedTouches[0].screenX - touchStartX;
@@ -440,7 +434,6 @@ window.touchMove = function(e) {
     bubble.querySelector('.swipe-reply-hint').style.opacity = Math.min(diffX/60, 1);
   }
 };
-// Attach touchmove dynamically
 document.addEventListener('touchmove', (e) => {
   if(e.target.closest('.bubble')) {
     window.touchMove(e);
@@ -462,4 +455,4 @@ onAuthStateChanged(auth,async user=>{
 showAuth('signup');
 </script>
 </body>
-  </html>
+                                                                                                                                                   </html>
