@@ -161,20 +161,39 @@ function startChats(){
 
 function conversationId(uid1,uid2){return [uid1,uid2].sort().join('_');}
 
+// FIXED CHAT FUNCTION: Added strict checks for missing IDs and proper error logging
 async function startChat(uid,name){
-  if(!uid||uid===currentUser.uid)return;
-  const id=conversationId(currentUser.uid,uid);
+  if(!uid || uid === 'undefined' || uid === 'null'){
+    toast('Error: This user does not have a valid ID yet.');
+    return;
+  }
+  if(!currentUser || !currentUser.uid){
+    toast('Error: You are not logged in.');
+    return;
+  }
+  if(uid === currentUser.uid){
+    toast('You cannot message yourself.');
+    return;
+  }
+
+  const id = conversationId(currentUser.uid, uid);
   try{
-    const r=doc(db,'conversations',id),s=await getDoc(r);
+    const r = doc(db,'conversations',id);
+    const s = await getDoc(r);
+    
     if(!s.exists()) {
-      await setDoc(r,{memberIds:[currentUser.uid,uid],createdAt:serverTimestamp(),updatedAt:serverTimestamp()});
+      await setDoc(r,{
+        memberIds: [currentUser.uid, uid],
+        createdAt: serverTimestamp(),
+        updatedAt: serverTimestamp()
+      });
     }
     closeModal();
     navigate('messages');
-    await openChat(id,uid,name);
+    await openChat(id, uid, name);
   }catch(e){
-    console.error(e);
-    toast('Could not start chat. Check Firestore rules.');
+    console.error("Chat Error Details:", e);
+    toast('Chat failed: ' + (e.code || e.message));
   }
 }
 
@@ -225,4 +244,4 @@ window.showAuth=showAuth;window.navigate=navigate;window.logout=logout;window.cr
 onAuthStateChanged(auth,async user=>{if(user&&user.emailVerified){currentUser=user;try{await ensureProfile();enterApp();}catch(e){console.error(e);toast('Could not load your profile. Check Firestore rules.');}}else{currentUser=null;$('app').classList.add('hidden');$('welcome').classList.remove('hidden');}});showAuth('signup');
 </script>
 </body>
-</html>
+                                        </html>
