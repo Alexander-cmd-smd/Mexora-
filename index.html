@@ -129,7 +129,6 @@
             <form id="profile-form">
               <label for="profile-name">Display name</label><input id="profile-name" maxlength="40" required>
               
-              <!-- UPDATED LOCATION FIELD -->
               <label for="profile-city">City</label>
               <div class="location-row">
                 <input id="profile-city" maxlength="60" placeholder="e.g. Lagos, Nigeria">
@@ -183,53 +182,31 @@ function getAvatar(name, gender, size=42) {
   return `<div class="avatar" style="background:${bg};width:${size}px;height:${size}px;font-size:${Math.round(size*0.45)}px">${letter}</div>`;
 }
 
-// NEW: Location Detection Function
 window.detectLocation = async function() {
   const btn = $('detect-loc-btn');
   const input = $('profile-city');
-  
-  if (!navigator.geolocation) {
-    toast('Geolocation is not supported by your browser.');
-    return;
-  }
-  
-  btn.disabled = true;
-  btn.textContent = '...';
-  
+  if (!navigator.geolocation) { toast('Geolocation is not supported.'); return; }
+  btn.disabled = true; btn.textContent = '...';
   navigator.geolocation.getCurrentPosition(async (position) => {
-    const lat = position.coords.latitude;
-    const lon = position.coords.longitude;
-    
+    const lat = position.coords.latitude, lon = position.coords.longitude;
     try {
-      // Using a free reverse geocoding API to get the city name from coordinates
       const response = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`);
       const data = await response.json();
-      
       const city = data.city || data.locality || data.principalSubdivision || data.countryName;
       const country = data.countryName;
-      
-      if (city && country) {
-        input.value = `${city}, ${country}`;
-      } else if (city) {
-        input.value = city;
-      } else {
-        input.value = `${lat.toFixed(2)}, ${lon.toFixed(2)}`;
-      }
-      
+      if (city && country) input.value = `${city}, ${country}`;
+      else if (city) input.value = city;
+      else input.value = `${lat.toFixed(2)}, ${lon.toFixed(2)}`;
       toast('Location detected! Don\'t forget to save.');
     } catch (error) {
       console.error('Reverse geocoding failed:', error);
       input.value = `${lat.toFixed(2)}, ${lon.toFixed(2)}`;
       toast('Coordinates saved. Please add city name manually if needed.');
-    } finally {
-      btn.disabled = false;
-      btn.textContent = '📍 Locate';
-    }
+    } finally { btn.disabled = false; btn.textContent = '📍 Locate'; }
   }, (error) => {
     console.error('Geolocation error:', error);
-    toast('Could not get location. Please enter it manually.');
-    btn.disabled = false;
-    btn.textContent = '📍 Locate';
+    toast('Could not get location.');
+    btn.disabled = false; btn.textContent = '📍 Locate';
   }, { timeout: 10000 });
 };
 
@@ -532,9 +509,16 @@ async function startChat(uid,name){
   const id=conversationId(currentUser.uid,uid);
   try{
     const r=doc(db,'conversations',id),s=await getDoc(r);
-    if(!s.exists()) { await setDoc(r,{memberIds:[currentUser.uid,uid],createdAt:serverTimestamp(),updatedAt:serverTimestamp()}); }
-    closeModal();navigate('messages');await openChat(id,uid,name);
-  }catch(e){ console.error(e); toast('Could not start chat.'); }
+    if(!s.exists()) { 
+      await setDoc(r,{memberIds:[currentUser.uid,uid],createdAt:serverTimestamp(),updatedAt:serverTimestamp()}); 
+    }
+    closeModal();
+    navigate('messages');
+    await openChat(id,uid,name);
+  }catch(e){ 
+    console.error(e); 
+    toast('Chat error: ' + e.message); 
+  }
 }
 
 async function openChat(id,otherUid,name){
@@ -543,7 +527,9 @@ async function openChat(id,otherUid,name){
   $('chat-text').disabled=false;$('send-chat').disabled=false;
   cancelReply();
   
-  updateDoc(doc(db,'conversations',id),{updatedAt:serverTimestamp()}).catch(e=>console.log('Read receipt failed'));
+  try {
+    updateDoc(doc(db,'conversations',id),{updatedAt:serverTimestamp()}).catch(e=>console.log('Read receipt failed', e));
+  } catch(e) {}
 
   onSnapshot(doc(db,'conversations',id), (docSnap) => {
     if(docSnap.exists()) {
@@ -579,7 +565,10 @@ async function openChat(id,otherUid,name){
     const chatBox = $('chat-messages');
     const isNearBottom = chatBox.scrollHeight - chatBox.scrollTop - chatBox.clientHeight < 150;
     if(isNearBottom) chatBox.scrollTop = chatBox.scrollHeight;
-  },e=>{console.error(e);toast('Could not load messages.');});
+  },e=>{
+    console.error(e);
+    toast('Messages error: ' + e.message);
+  });
 }
 
 async function sendChatMessage(){
@@ -595,7 +584,12 @@ async function sendChatMessage(){
     updateDoc(doc(db,'conversations',activeConversation),{updatedAt:serverTimestamp()}).catch(e=>console.log(e));
     $('chat-text').value='';
     cancelReply();
-  }catch(e){console.error(e);toast(e.message||'Message failed.');}finally{$('send-chat').disabled=false;}
+  }catch(e){
+    console.error(e);
+    toast('Send failed: ' + e.message); 
+  }finally{
+    $('send-chat').disabled=false;
+  }
 }
 
 let touchStartX = 0;
@@ -633,7 +627,6 @@ window.touchEnd = function(e) {
   
   const diffX = touchEndX - touchStartX;
   const diffY = touchEndY - touchStartY;
-  const timeElapsed = Date.now() - touchStartTime;
   
   bubble.style.transition = 'transform 0.2s';
   bubble.style.transform = 'translateX(0)';
