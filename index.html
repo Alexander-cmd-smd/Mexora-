@@ -403,11 +403,13 @@ function postCard(p,isRepost=false){
   const likeClass = p.isLiked ? 'liked' : '';
   
   const avatarHTML = getAvatar(post.authorName || author.name, post.authorGender || 'Rather not say', 42);
+  // FIX: Use the original post's ID for actions so likes/comments register correctly
+  const actionId = post.id || p.postId || p.id;
 
   return `<article class="card"><div class="post-head clickable" onclick="openProfile('${esc(post.ownerId||p.reposterId||'')}')">${avatarHTML}<div><strong>${esc(post.authorName||author.name||'Mexora member')}</strong><div class="small muted">${esc(post.city||'Worldwide')} · ${dateText(post.createdAt)}</div></div>${isRepost?'<span class="small muted" style="margin-left:auto">🔁 Reposted</span>':''}</div>${post.text?`<p style="line-height:1.65;white-space:pre-wrap">${esc(post.text)}</p>`:''}<div class="post-actions">
-    <button class="${likeClass}" onclick="likePost('${p.id||post.id}')">${heartIcon} ${p.likesCount||0}</button>
-    <button onclick="openComments('${post.id||p.postId}')">💬 ${p.commentsCount||0}</button>
-    <button onclick="repostPost('${post.id||p.postId}')">🔁 ${p.repostsCount||0}</button>
+    <button class="${likeClass}" onclick="likePost('${actionId}')">${heartIcon} ${p.likesCount||0}</button>
+    <button onclick="openComments('${actionId}')">💬 ${p.commentsCount||0}</button>
+    <button onclick="repostPost('${actionId}')">🔁 ${p.repostsCount||0}</button>
   </div></article>`;
 }
 
@@ -453,7 +455,35 @@ async function repostPost(postId){
   }catch(e){console.error(e);toast('Repost failed.');}
 }
 
-function startReposts(){if(repostUnsub)repostUnsub();repostUnsub=onSnapshot(query(collection(db,'reposts'),orderBy('createdAt','desc')),snap=>{$('repost-feed').innerHTML=snap.empty?'<div class="empty">No reposts yet.</div>':snap.docs.map(d=>postCard({id:d.id,...d.data()},true)).join('');},e=>{console.error(e);$('repost-feed').innerHTML='<div class="empty">Could not load reposts.</div>';});}
+function startReposts(){
+  if(repostUnsub)repostUnsub();
+  if(!currentUser) return;
+  // FIX: Filter reposts only by the current user and remove orderBy to avoid Firestore index errors
+  repostUnsub=onSnapshot(query(collection(db,'reposts'), where('reposterId', '==', currentUser.uid)), async snap=>{
+    let reposts = snap.docs.map(d=>({id:d.id,...d.data()}));
+    // Sort client-side by date
+    reposts.sort((a,b)=>(b.createdAt?.seconds||0)-(a.createdAt?.seconds||0));
+    
+    // Fetch latest counts for the original posts
+    await Promise.all(reposts.map(async r => {
+      if (r.original && r.original.id) {
+        try {
+          const likesSnap = await getDocs(collection(db,'posts',r.original.id,'likes'));
+          const commentsSnap = await getDocs(collection(db,'posts',r.original.id,'comments'));
+          const repostsSnap = await getDocs(query(collection(db,'reposts'), where('postId','==',r.original.id)));
+          const myLike = await getDoc(doc(db,'posts',r.original.id,'likes',currentUser.uid));
+          
+          r.likesCount = likesSnap.size;
+          r.commentsCount = commentsSnap.size;
+          r.repostsCount = repostsSnap.size;
+          r.isLiked = myLike.exists();
+        } catch(e) { console.log("Count error for repost", e); }
+      }
+    }));
+    
+    $('repost-feed').innerHTML=reposts.length?reposts.map(p=>postCard(p,true)).join(''):'<div class="empty">No reposts yet.</div>';
+  },e=>{console.error(e);$('repost-feed').innerHTML='<div class="empty">Could not load reposts.</div>';});
+}
 
 async function renderPeople(){
   const queryText=($('city-filter')?.value||'').trim().toLowerCase();
