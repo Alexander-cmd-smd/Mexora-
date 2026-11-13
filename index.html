@@ -389,8 +389,17 @@ function startFeed(){
         const repostsSnap = await getDocs(query(collection(db,'reposts'), where('postId','==',p.id)));
         let isLiked = false;
         if(currentUser) { const myLike = await getDoc(doc(db,'posts',p.id,'likes',currentUser.uid)); isLiked = myLike.exists(); }
-        p.likesCount = likesSnap.size; p.commentsCount = commentsSnap.size; p.repostsCount = repostsSnap.size; p.isLiked = isLiked;
-      } catch(e) { console.log("Count error", e); }
+        
+        p.likesCount = likesSnap.size || 0; 
+        p.commentsCount = commentsSnap.size || 0; 
+        p.repostsCount = repostsSnap.size || 0; 
+        p.isLiked = isLiked;
+      } catch(e) { 
+        console.warn("Count fetch issue", e); 
+        p.likesCount = p.likesCount || 0;
+        p.commentsCount = p.commentsCount || 0;
+        p.repostsCount = p.repostsCount || 0;
+      }
     }));
     renderFeed();
   },err=>{console.error(err);});
@@ -403,7 +412,8 @@ function postCard(p,isRepost=false){
   const likeClass = p.isLiked ? 'liked' : '';
   
   const avatarHTML = getAvatar(post.authorName || author.name, post.authorGender || 'Rather not say', 42);
-  // FIX: Use the original post's ID for actions so likes/comments register correctly
+  
+  // Use the original post's ID for actions so likes/comments register correctly
   const actionId = post.id || p.postId || p.id;
 
   return `<article class="card"><div class="post-head clickable" onclick="openProfile('${esc(post.ownerId||p.reposterId||'')}')">${avatarHTML}<div><strong>${esc(post.authorName||author.name||'Mexora member')}</strong><div class="small muted">${esc(post.city||'Worldwide')} · ${dateText(post.createdAt)}</div></div>${isRepost?'<span class="small muted" style="margin-left:auto">🔁 Reposted</span>':''}</div>${post.text?`<p style="line-height:1.65;white-space:pre-wrap">${esc(post.text)}</p>`:''}<div class="post-actions">
@@ -428,9 +438,24 @@ async function createPost(){
 
 async function likePost(postId){
   try{
-    const r=doc(db,'posts',postId,'likes',currentUser.uid);const s=await getDoc(r);
-    if(s.exists()){await deleteDoc(r);toast('Like removed.');}
-    else{await setDoc(r,{uid:currentUser.uid,createdAt:serverTimestamp()});toast('Post liked.');}
+    const r=doc(db,'posts',postId,'likes',currentUser.uid);
+    const s=await getDoc(r);
+    if(s.exists()){
+      await deleteDoc(r);
+      toast('Like removed.');
+    } else {
+      await setDoc(r,{uid:currentUser.uid,createdAt:serverTimestamp()});
+      toast('Post liked.');
+    }
+    // Refresh local cache immediately for UI update
+    const p = postsCache.find(x => x.id === postId);
+    if(p) {
+      const likesSnap = await getDocs(collection(db,'posts',postId,'likes'));
+      p.likesCount = likesSnap.size;
+      p.isLiked = !s.exists();
+      renderFeed();
+    }
+    startReposts(); // refresh reposts tab just in case
   }catch(e){toast('Could not update like.');}
 }
 
@@ -441,7 +466,18 @@ async function openComments(postId){
     $('comments-list').innerHTML=snap.empty?'<p class="muted">No comments yet.</p>':snap.docs.map(d=>{const c=d.data();return `<div class="comment-row"><strong>${esc(c.authorName||'Member')}</strong><div>${esc(c.text)}</div><div class="small muted">${dateText(c.createdAt)}</div></div>`}).join('');
     $('comment-form').addEventListener('submit',async e=>{
       e.preventDefault();const text=$('comment-text').value.trim();if(!text)return;
-      try{await addDoc(collection(db,'posts',postId,'comments'),{ownerId:currentUser.uid,authorName:currentProfile.name||currentUser.displayName||'Member',text,createdAt:serverTimestamp()});$('comment-text').value='';toast('Comment saved.');await openComments(postId);}catch(err){toast('Comment could not be saved.');}
+      try{
+        await addDoc(collection(db,'posts',postId,'comments'),{ownerId:currentUser.uid,authorName:currentProfile.name||currentUser.displayName||'Member',text,createdAt:serverTimestamp()});
+        $('comment-text').value='';toast('Comment saved.');await openComments(postId);
+        
+        // Refresh counts
+        const p = postsCache.find(x => x.id === postId);
+        if(p) {
+           const commentsSnap = await getDocs(collection(db,'posts',postId,'comments'));
+           p.commentsCount = commentsSnap.size;
+           renderFeed();
+        }
+      }catch(err){toast('Comment could not be saved.');}
     });
   }catch(e){console.error(e);$('comments-list').textContent='Could not load comments.';}
 }
@@ -451,21 +487,29 @@ async function repostPost(postId){
     const p=postsCache.find(x=>x.id===postId);
     const source=p||await (async()=>{const s=await getDoc(doc(db,'posts',postId));return s.exists()?{id:s.id,...s.data()}:null;})();
     if(!source){toast('Original post was not found.');return;}
-    await addDoc(collection(db,'reposts'),{ownerId:currentUser.uid,reposterId:currentUser.uid,repostedBy:currentProfile.name||currentUser.displayName||'Member',postId,original:source,note:'',createdAt:serverTimestamp()});toast('Reposted!');
+    await addDoc(collection(db,'reposts'),{ownerId:currentUser.uid,reposterId:currentUser.uid,repostedBy:currentProfile.name||currentUser.displayName||'Member',postId,original:source,note:'',createdAt:serverTimestamp()});
+    toast('Reposted!');
+    
+    // Refresh feeds
+    startFeed();
+    startReposts();
   }catch(e){console.error(e);toast('Repost failed.');}
 }
 
 function startReposts(){
   if(repostUnsub)repostUnsub();
   if(!currentUser) return;
-  // FIX: Filter reposts only by the current user and remove orderBy to avoid Firestore index errors
-  repostUnsub=onSnapshot(query(collection(db,'reposts'), where('reposterId', '==', currentUser.uid)), async snap=>{
-    let reposts = snap.docs.map(d=>({id:d.id,...d.data()}));
-    // Sort client-side by date
-    reposts.sort((a,b)=>(b.createdAt?.seconds||0)-(a.createdAt?.seconds||0));
+  
+  // FIX: Fetch all reposts and filter client-side to bypass Firestore index errors
+  repostUnsub=onSnapshot(collection(db,'reposts'), async snap=>{
+    let allReposts = snap.docs.map(d=>({id:d.id,...d.data()}));
+    let myReposts = allReposts.filter(r => r.reposterId === currentUser.uid);
+    
+    // Sort client-side
+    myReposts.sort((a,b)=>(b.createdAt?.seconds||0)-(a.createdAt?.seconds||0));
     
     // Fetch latest counts for the original posts
-    await Promise.all(reposts.map(async r => {
+    await Promise.all(myReposts.map(async r => {
       if (r.original && r.original.id) {
         try {
           const likesSnap = await getDocs(collection(db,'posts',r.original.id,'likes'));
@@ -473,16 +517,24 @@ function startReposts(){
           const repostsSnap = await getDocs(query(collection(db,'reposts'), where('postId','==',r.original.id)));
           const myLike = await getDoc(doc(db,'posts',r.original.id,'likes',currentUser.uid));
           
-          r.likesCount = likesSnap.size;
-          r.commentsCount = commentsSnap.size;
-          r.repostsCount = repostsSnap.size;
+          r.likesCount = likesSnap.size || 0;
+          r.commentsCount = commentsSnap.size || 0;
+          r.repostsCount = repostsSnap.size || 0;
           r.isLiked = myLike.exists();
-        } catch(e) { console.log("Count error for repost", e); }
+        } catch(e) { 
+          console.warn("Count error for repost", e);
+          r.likesCount = r.likesCount || 0;
+          r.commentsCount = r.commentsCount || 0;
+          r.repostsCount = r.repostsCount || 0;
+        }
       }
     }));
     
-    $('repost-feed').innerHTML=reposts.length?reposts.map(p=>postCard(p,true)).join(''):'<div class="empty">No reposts yet.</div>';
-  },e=>{console.error(e);$('repost-feed').innerHTML='<div class="empty">Could not load reposts.</div>';});
+    $('repost-feed').innerHTML=myReposts.length?myReposts.map(p=>postCard(p,true)).join(''):'<div class="empty">No reposts yet.</div>';
+  }, e => {
+    console.error("Reposts Error:", e);
+    $('repost-feed').innerHTML='<div class="empty">Could not load reposts. Please check your connection.</div>';
+  });
 }
 
 async function renderPeople(){
@@ -705,4 +757,4 @@ onAuthStateChanged(auth,async user=>{
 showAuth('signup');
 </script>
 </body>
-</html>
+                                                                                                                                                                </html>
